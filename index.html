@@ -3,39 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lucky Mobile | லக்கி மொபைல் - Thirukkanur, Puducherry</title>
-  <meta name="description" content="Lucky Mobile (லக்கி மொபைல்) - Your trusted smartphone sales, genuine accessories & express mobile repair service shop in Thirukkanur, Puducherry.">
-  <meta name="keywords" content="Lucky Mobile, லக்கி மொபைல், Thirukkanur mobile shop, Puducherry mobile store, mobile repair Thirukkanur, smartphones, iPhone, Samsung, Vivo, Oppo">
+  <title>Lucky Mobile | லக்கி மொபைல் - Your Mobile Our Priority</title>
+  <meta name="description" content="Lucky Mobile (லக்கி மொபைல்) - Thirukkanur's Premier Multi-Brand Mobile Hub. Sales, Express Repairs, Genuine Accessories & SIM Services.">
+  <meta name="keywords" content="Lucky Mobile, லக்கி மொபைல், Thirukkanur mobile shop, Puducherry mobile store, mobile repair Thirukkanur, iPhone, Samsung, Vivo, Oppo, OnePlus">
   
   <!-- Open Graph -->
   <meta property="og:title" content="Lucky Mobile | லக்கி மொபைல் - Thirukkanur">
-  <meta property="og:description" content="Latest Smartphones, 100% Genuine Accessories & 30-Min Fast Repair Service in Thirukkanur, Puducherry.">
+  <meta property="og:description" content="Your Mobile Our Priority - Latest Smartphones, Express 30-Min Repairs & Original Accessories in Thirukkanur, Puducherry.">
+  <meta property="og:image" content="lucky-mobile-poster.jpg">
   <meta property="og:type" content="website">
 
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mukta+Malar:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Mukta+Malar:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Custom CSS -->
+  <!-- Custom Dark Theme CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-theme">
+  <!-- Interactive Touch Canvas Background (Advanced Touching Effect) -->
+  <canvas id="touchCanvas" class="touch-interactive-canvas"></canvas>
+  <div id="touchSpotlight" class="touch-glow-spotlight"></div>
+
+  <!-- Interactive Corner Store Poster Widget -->
+  <aside class="corner-flyer-widget" id="cornerFlyer" title="Click to view full official poster">
+    <div class="corner-flyer-inner" id="openPosterModalBtn">
+      <div class="corner-flyer-pulse"></div>
+      <img src="lucky-mobile-poster.jpg" alt="Lucky Mobile Official Poster" class="corner-flyer-img">
+      <div class="corner-flyer-tag">
+        <i class="fa-solid fa-expand"></i>
+        <span data-i18n="flyerTag">Official Flyer</span>
+      </div>
+    </div>
+    <button class="corner-flyer-close" id="minimizeFlyerBtn" aria-label="Minimize poster badge">&times;</button>
+  </aside>
+
+  <!-- Fullscreen Poster Lightbox Modal -->
+  <div class="poster-modal" id="posterModal" aria-hidden="true" role="dialog">
+    <div class="poster-modal-backdrop" id="closePosterBackdrop"></div>
+    <div class="poster-modal-dialog">
+      <div class="poster-modal-header">
+        <div class="modal-title-box">
+          <i class="fa-solid fa-award text-gold"></i>
+          <div>
+            <h3>Lucky Mobile Official Flyer</h3>
+            <span class="sub">Your Mobile Our Priority • Thirukkanur, Puducherry</span>
+          </div>
+        </div>
+        <button class="poster-modal-close" id="closePosterBtn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="poster-modal-body">
+        <img src="lucky-mobile-poster.jpg" alt="Lucky Mobile Store Poster Full Details" class="modal-poster-full">
+      </div>
+      <div class="poster-modal-footer">
+        <a href="lucky-mobile-poster.jpg" download="Lucky-Mobile-Thirukkanur-Poster.jpg" class="btn btn-outline-gold">
+          <i class="fa-solid fa-download"></i> <span data-i18n="downloadPoster">Download Poster</span>
+        </a>
+        <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20saw%20your%20official%20flyer%20and%20want%20to%20enquire%20about%20offers" target="_blank" class="btn btn-whatsapp-header">
+          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="chatWhatsapp">WhatsApp Enquiry</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Top Announcement Bar -->
   <div class="top-bar">
     <div class="container top-bar-content">
       <div class="top-info">
-        <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="addressShort">76, Tiruvannamalai Rd, Thirukkanur, Puducherry</span></span>
+        <span><i class="fa-solid fa-location-dot text-gold"></i> <span data-i18n="addressShort">76, Tiruvannamalai Rd, Thirukkanur, Puducherry 605501</span></span>
         <span class="divider">|</span>
-        <span><i class="fa-regular fa-clock"></i> <span data-i18n="timingShort">Open Everyday: 9:00 AM - 9:30 PM</span></span>
+        <span><i class="fa-regular fa-clock text-cyan"></i> <span data-i18n="timingShort">Open Everyday: 9:00 AM - 9:30 PM</span></span>
       </div>
       <div class="top-actions">
         <!-- Language Switcher -->
         <button id="langToggleBtn" class="lang-btn" aria-label="Toggle language">
           <i class="fa-solid fa-language"></i> <span id="currentLangLabel">தமிழ்</span>
         </button>
-        <a href="tel:+919876543210" class="call-link"><i class="fa-solid fa-phone"></i> +91 98765 43210</a>
+        <a href="tel:+919876543210" class="call-link"><i class="fa-solid fa-phone text-gold"></i> +91 98765 43210</a>
       </div>
     </div>
   </div>
@@ -44,11 +90,16 @@
   <header class="main-header" id="navbar">
     <div class="container nav-wrapper">
       <a href="#home" class="logo">
-        <div class="logo-icon">
+        <div class="logo-icon-gold">
+          <i class="fa-solid fa-crown logo-crown"></i>
           <i class="fa-solid fa-mobile-screen-button"></i>
         </div>
         <div class="logo-text">
-          <span class="brand-en">Lucky Mobile</span>
+          <div class="brand-line">
+            <span class="brand-en">LUCKY MOBILE</span>
+            <span class="brand-badge-pro">PRO</span>
+          </div>
+          <span class="brand-tagline-motto" data-i18n="brandMotto">Your Mobile Our Priority</span>
           <span class="brand-ta">லக்கி மொபைல்</span>
         </div>
       </a>
@@ -57,16 +108,19 @@
       <nav class="nav-links" id="navLinks">
         <a href="#home" class="nav-item active" data-i18n="navHome">Home</a>
         <a href="#products" class="nav-item" data-i18n="navPhones">Smartphones</a>
+        <a href="#services-all" class="nav-item" data-i18n="navAllServices">Store Services</a>
         <a href="#accessories" class="nav-item" data-i18n="navAccessories">Accessories</a>
-        <a href="#services" class="nav-item" data-i18n="navRepairs">Repairs & Service</a>
+        <a href="#services" class="nav-item" data-i18n="navRepairs">Repair Estimator</a>
         <a href="#offers" class="nav-item" data-i18n="navOffers">Offers</a>
-        <a href="#reviews" class="nav-item" data-i18n="navReviews">Reviews</a>
-        <a href="#contact" class="nav-item" data-i18n="navContact">Contact</a>
+        <a href="#contact" class="nav-item" data-i18n="navContact">Location</a>
       </nav>
 
       <div class="header-cta">
+        <button class="btn btn-flyer-nav" id="navFlyerBtn" title="View Store Flyer">
+          <i class="fa-regular fa-image text-gold"></i> <span data-i18n="viewFlyerNav">Store Flyer</span>
+        </button>
         <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20have%20an%20inquiry%20about%20your%20products/services" target="_blank" class="btn btn-whatsapp-header">
-          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="chatWhatsapp">WhatsApp Us</span>
+          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="chatWhatsapp">WhatsApp</span>
         </a>
         <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu">
           <i class="fa-solid fa-bars"></i>
@@ -79,83 +133,96 @@
   <section class="hero-section" id="home">
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="badge-store">
-          <span class="status-dot"></span>
-          <span data-i18n="heroBadge">Thirukkanur's Premier Multi-Brand Mobile Hub</span>
+        <div class="badge-store-gold">
+          <span class="status-dot-gold"></span>
+          <span data-i18n="heroBadge">New Arrivals Everyday • Best Deals • Trusted Service</span>
         </div>
+
         <h1 class="hero-title" data-i18n="heroTitle">
-          Latest Smartphones & Express Mobile Repairs Under One Roof
+          Latest Smartphones & Express Mobile Solutions Under One Roof
         </h1>
+
+        <p class="hero-motto-callout">
+          <i class="fa-solid fa-bolt-lightning text-gold"></i> <strong data-i18n="mottoCallout">"Your Mobile Our Priority"</strong> — <span data-i18n="mottoSub">Thirukkanur's most trusted smartphone & chip-level repair hub.</span>
+        </p>
+
         <p class="hero-desc" data-i18n="heroDesc">
-          Authorized multi-brand sales, 100% genuine accessories, tempered glass installation, and express 30-minute chip-level smartphone repair by certified experts.
+          Authorized multi-brand sales, 100% genuine accessories, tempered glass installation, SIM card services, and express 30-minute chip-level smartphone repair.
         </p>
 
         <!-- CTA Buttons -->
         <div class="hero-buttons">
-          <a href="#products" class="btn btn-primary">
+          <a href="#products" class="btn btn-gold">
             <i class="fa-solid fa-bag-shopping"></i> <span data-i18n="btnBrowsePhones">Explore Phones</span>
           </a>
-          <a href="#services" class="btn btn-secondary">
-            <i class="fa-solid fa-wrench"></i> <span data-i18n="btnRepairCalc">Repair Estimator</span>
+          <a href="#services" class="btn btn-glass-cyan">
+            <i class="fa-solid fa-calculator"></i> <span data-i18n="btnRepairCalc">Repair Estimator</span>
           </a>
-          <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="btn btn-outline">
-            <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="btnGetDirections">Get Directions</span>
-          </a>
+          <button class="btn btn-glass-poster" id="heroPosterTriggerBtn">
+            <i class="fa-solid fa-file-invoice text-gold"></i> <span data-i18n="heroViewPoster">View Store Poster</span>
+          </button>
         </div>
 
-        <!-- Trust Badges -->
-        <div class="hero-highlights">
-          <div class="highlight-item">
-            <i class="fa-solid fa-shield-halved"></i>
+        <!-- Trust Badges from Official Poster -->
+        <div class="hero-highlights-dark">
+          <div class="highlight-item-dark">
+            <div class="hi-icon gold-glow"><i class="fa-solid fa-shield-check"></i></div>
             <div>
-              <strong data-i18n="feat1Title">100% Genuine</strong>
-              <span data-i18n="feat1Desc">Original spares & sealed box</span>
+              <strong data-i18n="feat1Title">100% Original Products</strong>
+              <span data-i18n="feat1Desc">Sealed box & authentic parts</span>
             </div>
           </div>
-          <div class="highlight-item">
-            <i class="fa-solid fa-bolt-lightning"></i>
+          <div class="highlight-item-dark">
+            <div class="hi-icon cyan-glow"><i class="fa-solid fa-tag"></i></div>
             <div>
-              <strong data-i18n="feat2Title">30-Min Express</strong>
-              <span data-i18n="feat2Desc">Instant screen & battery fixes</span>
+              <strong data-i18n="featBestPrices">Best Price Guarantee</strong>
+              <span data-i18n="featBestPricesDesc">Unbeatable local festival deals</span>
             </div>
           </div>
-          <div class="highlight-item">
-            <i class="fa-solid fa-credit-card"></i>
+          <div class="highlight-item-dark">
+            <div class="hi-icon green-glow"><i class="fa-solid fa-handshake"></i></div>
             <div>
-              <strong data-i18n="feat3Title">0% EMI Available</strong>
-              <span data-i18n="feat3Desc">Bajaj & Credit card options</span>
+              <strong data-i18n="featCustomerSat">Customer Satisfaction</strong>
+              <span data-i18n="featCustomerSatDesc">Fast, friendly & reliable service</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Hero Visual Card -->
+      <!-- Hero Visual Showcase with Official Poster -->
       <div class="hero-card-wrapper">
-        <div class="hero-glass-card">
-          <div class="store-badge-live">
-            <i class="fa-solid fa-circle-check"></i> <span data-i18n="openEveryday">Store Open Today: 9 AM - 9:30 PM</span>
+        <div class="hero-poster-card tilt-element" id="heroPosterCard">
+          <div class="poster-corner-ribbon">
+            <span>OFFICIAL</span>
           </div>
-          <div class="phone-showcase-visual">
-            <div class="device-mockup main-device">
-              <div class="mockup-header">
-                <span class="notch"></span>
-              </div>
-              <div class="mockup-screen">
-                <div class="screen-content">
-                  <div class="screen-logo">Lucky Mobile</div>
-                  <div class="special-tag" data-i18n="festivalDeal">Special Deal</div>
-                  <h4>iPhone & 5G Phones</h4>
-                  <p class="price-drop">Starting from ₹9,999*</p>
-                  <span class="screen-cta" data-i18n="checkOffer">Instant ₹3,000 Exchange Bonus</span>
-                </div>
-              </div>
+          <div class="hero-poster-header">
+            <div class="store-badge-live-dark">
+              <i class="fa-solid fa-circle-check text-green"></i> <span data-i18n="openEveryday">Open Everyday: 9 AM - 9:30 PM</span>
+            </div>
+            <span class="touch-hint"><i class="fa-solid fa-hand-pointer text-gold"></i> <span data-i18n="touchHint">Tap to enlarge</span></span>
+          </div>
+
+          <div class="poster-image-container" id="heroPosterImgBox">
+            <img src="lucky-mobile-poster.jpg" alt="Lucky Mobile Official Flyer - Thirukkanur" class="hero-poster-main-img">
+            <div class="poster-overlay-glow">
+              <span class="btn-preview-poster"><i class="fa-solid fa-magnifying-glass-plus"></i> <span data-i18n="clickFullPoster">View Full Details</span></span>
             </div>
           </div>
-          <div class="floating-promo-badge">
-            <i class="fa-solid fa-gift"></i>
-            <div>
-              <strong>Free Screen Protector</strong>
-              <span>With every display change!</span>
+
+          <div class="hero-poster-footer">
+            <div class="poster-stat">
+              <i class="fa-solid fa-star text-gold"></i>
+              <span>4.8/5 Rated</span>
+            </div>
+            <div class="poster-stat-divider"></div>
+            <div class="poster-stat">
+              <i class="fa-solid fa-bolt text-cyan"></i>
+              <span>30-Min Fast Fix</span>
+            </div>
+            <div class="poster-stat-divider"></div>
+            <div class="poster-stat">
+              <i class="fa-solid fa-location-dot text-gold"></i>
+              <span>Thirukkanur</span>
             </div>
           </div>
         </div>
@@ -163,124 +230,183 @@
     </div>
   </section>
 
-  <!-- Brands Ticker -->
-  <section class="brand-bar">
+  <!-- Brands Ticker (Updated from poster: iPhone, Samsung, Xiaomi, Vivo, Oppo, Realme, OnePlus, Tecno, Infinix, Poco, Itel) -->
+  <section class="brand-bar-dark">
     <div class="container">
-      <p class="brand-bar-title" data-i18n="brandBarTitle">Authorized Sales & Care For Top Brands</p>
-      <div class="brand-logos">
-        <span class="brand-chip"><i class="fa-brands fa-apple"></i> Apple iPhone</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Samsung Galaxy</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Vivo</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Oppo</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> OnePlus</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Xiaomi / Redmi</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Realme</span>
-        <span class="brand-chip"><i class="fa-solid fa-mobile"></i> Motorola</span>
+      <p class="brand-bar-title-dark" data-i18n="brandBarTitle">Authorized Sales, Accessories & Service For All Major Brands</p>
+      <div class="brand-logos-dark">
+        <span class="brand-chip-dark"><i class="fa-brands fa-apple"></i> iPhone</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> SAMSUNG</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Xiaomi / Redmi</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> vivo</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> oppo</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> realme</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> ONEPLUS</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> TECNO</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Infinix</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> POCO</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> itel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Sales & Services Matrix from Poster -->
+  <section class="section-dark" id="services-all">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle-dark" data-i18n="matrixSubtitle">Mobile Solutions Under One Roof</span>
+        <h2 class="section-title-dark" data-i18n="matrixTitle">Sales & Services Breakdown</h2>
+        <p class="section-desc-dark" data-i18n="matrixDesc">Everything you need for your smartphone — from brand new devices to chip-level servicing and utility recharges.</p>
+      </div>
+
+      <div class="sales-services-grid">
+        <!-- Sales Card -->
+        <div class="matrix-card tilt-element">
+          <div class="matrix-header sales-header">
+            <div class="matrix-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+            <div>
+              <h3 data-i18n="matrixSalesTitle">SALES DEPARTMENT</h3>
+              <span data-i18n="matrixSalesSub">New Arrivals Everyday!</span>
+            </div>
+          </div>
+          <ul class="matrix-list">
+            <li><i class="fa-solid fa-circle-check text-gold"></i> <strong data-i18n="s1">Latest Smartphones</strong> <span>(Apple, Samsung, Vivo, Oppo, Xiaomi, etc.)</span></li>
+            <li><i class="fa-solid fa-circle-check text-gold"></i> <strong data-i18n="s2">Original Accessories</strong> <span>(Chargers, Cables, Earbuds, Smartwatches)</span></li>
+            <li><i class="fa-solid fa-circle-check text-gold"></i> <strong data-i18n="s3">New & Refurbished Phones</strong> <span>(Quality tested with warranty)</span></li>
+            <li><i class="fa-solid fa-circle-check text-gold"></i> <strong data-i18n="s4">Exchange Offers</strong> <span>(Get up to ₹3,000 extra on old phones)</span></li>
+            <li><i class="fa-solid fa-circle-check text-gold"></i> <strong data-i18n="s5">EMI / Finance Available</strong> <span>(0% downpayment & easy monthly installments)</span></li>
+          </ul>
+          <a href="#products" class="btn btn-gold btn-block mt-3">
+            <i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="browseStockBtn">Browse In-Stock Phones</span>
+          </a>
+        </div>
+
+        <!-- Services Card -->
+        <div class="matrix-card tilt-element">
+          <div class="matrix-header service-header">
+            <div class="matrix-icon cyan"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <div>
+              <h3 data-i18n="matrixServicesTitle">SERVICES DEPARTMENT</h3>
+              <span data-i18n="matrixServicesSub">Certified Technical Experts</span>
+            </div>
+          </div>
+          <ul class="matrix-list">
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv1">Mobile Repairing</strong> <span>(Screen, Battery, Software, Hardware)</span></li>
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv2">Software Update & Unlocking</strong> <span>(Pattern / FRP / Network Unlocking)</span></li>
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv3">Data Transfer & Backup</strong> <span>(Phone to Phone / Cloud Backup)</span></li>
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv4">SIM Card Services</strong> <span>(New SIM / MNP Porting / eSIM Activation)</span></li>
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv5">Accessories Installation</strong> <span>(Tempered Glass / UV Screen Guard / Covers)</span></li>
+            <li><i class="fa-solid fa-circle-check text-cyan"></i> <strong data-i18n="srv6">Mobile Recharges & Bill Payments</strong> <span>(All Operators / DTH / Electricity / Water)</span></li>
+          </ul>
+          <a href="#services" class="btn btn-glass-cyan btn-block mt-3">
+            <i class="fa-solid fa-calculator"></i> <span data-i18n="calcRepairQuoteBtn">Calculate Repair Quote</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Smartphones Catalog Section -->
-  <section class="section" id="products">
+  <section class="section-dark" id="products">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-subtitle" data-i18n="catSubtitle">Flagships, Mid-Rangers & Budget Bestsellers</span>
-        <h2 class="section-title" data-i18n="catTitle">Featured Smartphones in Stock</h2>
-        <p class="section-desc" data-i18n="catDesc">Walk into our Thirukkanur store for live demo, easy EMI options, and instant exchange quotes.</p>
+        <span class="section-subtitle-dark" data-i18n="catSubtitle">Flagships, Mid-Rangers & Budget Bestsellers</span>
+        <h2 class="section-title-dark" data-i18n="catTitle">Featured Smartphones in Stock</h2>
+        <p class="section-desc-dark" data-i18n="catDesc">Walk into our Thirukkanur store for live demo, easy EMI options, and instant exchange quotes.</p>
       </div>
 
       <!-- Filter Controls -->
       <div class="filter-wrapper">
-        <div class="search-box">
+        <div class="search-box-dark">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="phoneSearchInput" placeholder="Search phone models (e.g. Vivo, iPhone, Samsung)...">
+          <input type="text" id="phoneSearchInput" placeholder="Search phone models (e.g. Vivo, iPhone, Samsung, Tecno)...">
         </div>
-        <div class="filter-tabs">
-          <button class="filter-tab active" data-filter="all" data-i18n="filterAll">All Phones</button>
-          <button class="filter-tab" data-filter="flagship" data-i18n="filterFlagship">Flagship / Premium</button>
-          <button class="filter-tab" data-filter="midrange" data-i18n="filterMid">Mid-Range (₹12k - ₹25k)</button>
-          <button class="filter-tab" data-filter="budget" data-i18n="filterBudget">Budget (Under ₹12k)</button>
-          <button class="filter-tab" data-filter="5g" data-i18n="filter5G">5G Specials</button>
+        <div class="filter-tabs-dark">
+          <button class="filter-tab-dark active" data-filter="all" data-i18n="filterAll">All Phones</button>
+          <button class="filter-tab-dark" data-filter="flagship" data-i18n="filterFlagship">Flagship / Premium</button>
+          <button class="filter-tab-dark" data-filter="midrange" data-i18n="filterMid">Mid-Range (₹12k - ₹25k)</button>
+          <button class="filter-tab-dark" data-filter="budget" data-i18n="filterBudget">Budget (Under ₹12k)</button>
+          <button class="filter-tab-dark" data-filter="5g" data-i18n="filter5G">5G Specials</button>
         </div>
       </div>
 
       <!-- Product Grid -->
       <div class="product-grid" id="productGrid">
-        <!-- Injected dynamically via script.js -->
+        <!-- Injected dynamically via script.js with dark tilt styling -->
       </div>
     </div>
   </section>
 
   <!-- Accessories Section -->
-  <section class="section bg-light" id="accessories">
+  <section class="section-dark bg-dark-alt" id="accessories">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-subtitle" data-i18n="accSubtitle">Keep Your Phone Powered & Protected</span>
-        <h2 class="section-title" data-i18n="accTitle">Must-Have Mobile Accessories</h2>
-        <p class="section-desc" data-i18n="accDesc">100% genuine chargers, fast charging cables, high-bass earbuds, smartwatches, and unbreakable screen guards.</p>
+        <span class="section-subtitle-dark" data-i18n="accSubtitle">Keep Your Phone Powered & Protected</span>
+        <h2 class="section-title-dark" data-i18n="accTitle">Must-Have Mobile Accessories</h2>
+        <p class="section-desc-dark" data-i18n="accDesc">100% genuine chargers, fast charging cables, high-bass earbuds, smartwatches, and unbreakable screen guards.</p>
       </div>
 
       <div class="accessories-grid">
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-shield-virus"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark gold"><i class="fa-solid fa-shield-virus"></i></div>
           <h3 data-i18n="acc1Title">Tempered Glass & UV Protectors</h3>
           <p data-i18n="acc1Desc">Edge-to-edge 9D, matte, privacy, and UV tempered glass applied with zero bubbles.</p>
-          <span class="acc-price">Starts ₹99</span>
+          <span class="acc-price-dark">Starts ₹99</span>
         </div>
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark cyan"><i class="fa-solid fa-bolt"></i></div>
           <h3 data-i18n="acc2Title">Fast Chargers & Type-C Cables</h3>
           <p data-i18n="acc2Desc">Original 20W, 33W, 67W, 100W PD adapters, braided cables for iPhone and Android.</p>
-          <span class="acc-price">Starts ₹199</span>
+          <span class="acc-price-dark">Starts ₹199</span>
         </div>
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-headphones"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark green"><i class="fa-solid fa-headphones"></i></div>
           <h3 data-i18n="acc3Title">TWS Earbuds & Neckbands</h3>
           <p data-i18n="acc3Desc">Noise-cancelling wireless earbuds, boAt, Noise, OnePlus, and Realme audio accessories.</p>
-          <span class="acc-price">Starts ₹499</span>
+          <span class="acc-price-dark">Starts ₹499</span>
         </div>
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-clock"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark gold"><i class="fa-solid fa-clock"></i></div>
           <h3 data-i18n="acc4Title">Smartwatches & Fitness Bands</h3>
           <p data-i18n="acc4Desc">Bluetooth calling smartwatches, AMOLED displays with heart rate and fitness tracking.</p>
-          <span class="acc-price">Starts ₹999</span>
+          <span class="acc-price-dark">Starts ₹999</span>
         </div>
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-battery-full"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark cyan"><i class="fa-solid fa-battery-full"></i></div>
           <h3 data-i18n="acc5Title">Power Banks (10k / 20k mAh)</h3>
           <p data-i18n="acc5Desc">High-capacity flight-friendly power banks with quick charge 3.0 & two-way Type-C.</p>
-          <span class="acc-price">Starts ₹799</span>
+          <span class="acc-price-dark">Starts ₹799</span>
         </div>
-        <div class="acc-card">
-          <div class="acc-icon"><i class="fa-solid fa-mobile-retro"></i></div>
+        <div class="acc-card-dark tilt-element">
+          <div class="acc-icon-dark green"><i class="fa-solid fa-mobile-retro"></i></div>
           <h3 data-i18n="acc6Title">Trendy Back Covers & Pouches</h3>
           <p data-i18n="acc6Desc">Shockproof silicon, leather wallet cases, MagSafe covers, and custom printed cases.</p>
-          <span class="acc-price">Starts ₹149</span>
+          <span class="acc-price-dark">Starts ₹149</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Interactive Repair & Service Estimator -->
-  <section class="section" id="services">
+  <section class="section-dark" id="services">
     <div class="container">
       <div class="service-wrapper">
         <div class="service-info">
-          <span class="section-subtitle" data-i18n="repairSubtitle">Quick & Reliable Chip-Level Care</span>
-          <h2 class="section-title" data-i18n="repairTitle">Instant Mobile Repair Cost Estimator</h2>
-          <p class="section-desc" data-i18n="repairDesc">
+          <span class="section-subtitle-dark" data-i18n="repairSubtitle">Quick & Reliable Chip-Level Care</span>
+          <h2 class="section-title-dark" data-i18n="repairTitle">Instant Mobile Repair Cost Estimator</h2>
+          <p class="section-desc-dark" data-i18n="repairDesc">
             Broken screen? Battery draining fast? Water damage? Get an instant cost estimate and turnaround time. We offer on-the-spot repair with transparent pricing.
           </p>
 
-          <ul class="repair-benefits">
+          <ul class="repair-benefits-dark">
             <li><i class="fa-solid fa-circle-check text-green"></i> <span data-i18n="repBen1">30 to 60 Minutes Quick Screen / Battery Swap</span></li>
             <li><i class="fa-solid fa-circle-check text-green"></i> <span data-i18n="repBen2">Up to 90 Days Warranty on Replacement Displays</span></li>
             <li><i class="fa-solid fa-circle-check text-green"></i> <span data-i18n="repBen3">Free Device Diagnostics & Inspection</span></li>
             <li><i class="fa-solid fa-circle-check text-green"></i> <span data-i18n="repBen4">100% Data Privacy & Safe Component Handling</span></li>
           </ul>
 
-          <div class="repair-phone-box">
-            <i class="fa-solid fa-headset"></i>
+          <div class="repair-phone-box-dark">
+            <i class="fa-solid fa-headset text-gold"></i>
             <div>
               <strong data-i18n="repairCallHelp">Need immediate technician advice?</strong>
               <p>Call our workshop directly: <a href="tel:+919876543210">+91 98765 43210</a></p>
@@ -289,16 +415,16 @@
         </div>
 
         <!-- Calculator Form -->
-        <div class="calculator-card">
-          <div class="calc-header">
-            <h3><i class="fa-solid fa-calculator"></i> <span data-i18n="calcHeader">Calculate Repair Estimate</span></h3>
+        <div class="calculator-card-dark tilt-element">
+          <div class="calc-header-dark">
+            <h3><i class="fa-solid fa-calculator text-gold"></i> <span data-i18n="calcHeader">Calculate Repair Estimate</span></h3>
             <p data-i18n="calcSub">Select your phone details below</p>
           </div>
 
           <form id="repairForm">
-            <div class="form-group">
+            <div class="form-group-dark">
               <label for="brandSelect" data-i18n="lblBrand">1. Select Phone Brand</label>
-              <select id="brandSelect" class="form-control" required>
+              <select id="brandSelect" class="form-control-dark" required>
                 <option value="vivo">Vivo</option>
                 <option value="oppo">Oppo</option>
                 <option value="samsung">Samsung</option>
@@ -306,37 +432,38 @@
                 <option value="realme">Realme</option>
                 <option value="oneplus">OnePlus</option>
                 <option value="apple">Apple iPhone</option>
+                <option value="tecno">Tecno / Infinix / itel</option>
                 <option value="moto">Motorola / Other</option>
               </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group-dark">
               <label for="modelInput" data-i18n="lblModel">2. Model Name / Number</label>
-              <input type="text" id="modelInput" class="form-control" placeholder="e.g. Vivo V29, Redmi Note 13, iPhone 13" required>
+              <input type="text" id="modelInput" class="form-control-dark" placeholder="e.g. Vivo V29, Redmi Note 13, iPhone 13" required>
             </div>
 
-            <div class="form-group">
+            <div class="form-group-dark">
               <label for="issueSelect" data-i18n="lblIssue">3. What is the Problem?</label>
-              <select id="issueSelect" class="form-control" required>
+              <select id="issueSelect" class="form-control-dark" required>
                 <option value="screen" data-time="45 mins" data-min="1299" data-max="3499">Cracked / Dead Display Screen</option>
                 <option value="battery" data-time="30 mins" data-min="699" data-max="1499">Battery Draining / Needs Replacement</option>
                 <option value="charging" data-time="30 mins" data-min="299" data-max="699">Charging Port Loose / Not Charging</option>
                 <option value="water" data-time="2 hours" data-min="499" data-max="1200">Water Damage / Won't Turn On</option>
                 <option value="speaker" data-time="30 mins" data-min="250" data-max="550">Speaker / Mic / Audio Issues</option>
                 <option value="camera" data-time="45 mins" data-min="499" data-max="1800">Camera Blurry / Broken Lens Glass</option>
-                <option value="software" data-time="30 mins" data-min="200" data-max="500">Software Flashing / Bootloop / Pattern Unlock</option>
+                <option value="software" data-time="30 mins" data-min="200" data-max="500">Software Flashing / FRP / Pattern Unlock</option>
               </select>
             </div>
 
             <!-- Estimate Output -->
-            <div class="estimate-result" id="estimateResult">
+            <div class="estimate-result-dark" id="estimateResult">
               <div class="est-row">
                 <span data-i18n="estPriceLbl">Estimated Cost:</span>
-                <span class="est-price" id="calcPriceDisplay">₹1,299 - ₹3,499</span>
+                <span class="est-price-gold" id="calcPriceDisplay">₹1,299 - ₹3,499</span>
               </div>
               <div class="est-row">
                 <span data-i18n="estTimeLbl">Service Time:</span>
-                <span class="est-time" id="calcTimeDisplay"><i class="fa-regular fa-clock"></i> ~45 Minutes</span>
+                <span class="est-time-cyan" id="calcTimeDisplay"><i class="fa-regular fa-clock"></i> ~45 Minutes</span>
               </div>
               <p class="est-note" data-i18n="estNote">*Final price subject to exact model and OEM/Original display choice upon store inspection.</p>
             </div>
@@ -351,26 +478,26 @@
   </section>
 
   <!-- Special Offers Banner -->
-  <section class="section bg-gradient-offer" id="offers">
+  <section class="section-dark bg-gradient-offer-dark" id="offers">
     <div class="container">
-      <div class="offer-banner">
+      <div class="offer-banner-dark">
         <div class="offer-content">
-          <span class="offer-tag" data-i18n="limitedOffer">Exclusive Thirukkanur Store Offer</span>
+          <span class="offer-tag-gold" data-i18n="limitedOffer">Exclusive Thirukkanur Store Offer</span>
           <h2 data-i18n="offerHeading">Upgrade Your Old Phone Today!</h2>
           <p data-i18n="offerDesc">
             Bring any working or broken old smartphone to Lucky Mobile and get an instant cash exchange value up to <strong>₹3,000 extra bonus</strong> on your new smartphone purchase.
           </p>
-          <div class="offer-features">
-            <span><i class="fa-solid fa-check"></i> Free Data Transfer</span>
-            <span><i class="fa-solid fa-check"></i> Free Armor Screen Guard</span>
-            <span><i class="fa-solid fa-check"></i> 0% Downpayment EMI</span>
+          <div class="offer-features-dark">
+            <span><i class="fa-solid fa-check text-gold"></i> Free Data Transfer</span>
+            <span><i class="fa-solid fa-check text-gold"></i> Free Armor Screen Guard</span>
+            <span><i class="fa-solid fa-check text-gold"></i> 0% Downpayment EMI</span>
           </div>
-          <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20want%20to%20know%20exchange%20value%20for%20my%20old%20phone" target="_blank" class="btn btn-white">
+          <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20want%20to%20know%20exchange%20value%20for%20my%20old%20phone" target="_blank" class="btn btn-gold">
             <i class="fa-brands fa-whatsapp"></i> <span data-i18n="enquireExchange">Check Exchange Value</span>
           </a>
         </div>
         <div class="offer-graphic">
-          <div class="offer-discount-circle">
+          <div class="offer-discount-circle-dark">
             <span class="disc-amt">UP TO</span>
             <span class="disc-num">30%</span>
             <span class="disc-txt">OFF ACCESSORIES</span>
@@ -380,95 +507,23 @@
     </div>
   </section>
 
-  <!-- Testimonials & Reviews -->
-  <section class="section" id="reviews">
-    <div class="container">
-      <div class="section-header text-center">
-        <span class="section-subtitle" data-i18n="revSubtitle">Trusted By Hundreds of Happy Customers</span>
-        <h2 class="section-title" data-i18n="revTitle">What Local Customers Say</h2>
-        <div class="google-rating-badge">
-          <i class="fa-brands fa-google text-primary"></i>
-          <span class="rating-stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half-stroke"></i>
-          </span>
-          <strong>4.8 / 5.0 Rating</strong>
-          <span>(Based on Google Reviews)</span>
-        </div>
-      </div>
-
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="review-text">"Changed my Vivo display here in just 40 minutes! Touch quality is original and the price was much cheaper than Puducherry town service centers. Highly recommended!"</p>
-          <div class="reviewer">
-            <div class="avatar">S</div>
-            <div>
-              <strong>Senthil Kumar</strong>
-              <span>Thirukkanur Resident</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="review-text">"Bought a new Redmi 5G phone here for festival offer. They helped with full contacts and WhatsApp backup transfer for free. Very polite and customer friendly staff."</p>
-          <div class="reviewer">
-            <div class="avatar">M</div>
-            <div>
-              <strong>Manikandan R.</strong>
-              <span>Villupuram Road</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
-          <p class="review-text">"Best shop in Thirukkanur for mobile accessories. Original Type-C chargers, tempered glass, and branded bluetooth headphones at very reasonable prices."</p>
-          <div class="reviewer">
-            <div class="avatar">P</div>
-            <div>
-              <strong>Praveen Doss</strong>
-              <span>Puducherry</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="btn btn-outline">
-          <i class="fa-brands fa-google"></i> <span data-i18n="writeReview">Write a Google Review</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- Location & Contact -->
-  <section class="section bg-light" id="contact">
+  <section class="section-dark bg-dark-alt" id="contact">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-subtitle" data-i18n="contactSubtitle">Easy to Find in Thirukkanur</span>
-        <h2 class="section-title" data-i18n="contactTitle">Visit Our Store or Contact Us</h2>
+        <span class="section-subtitle-dark" data-i18n="contactSubtitle">Easy to Find in Thirukkanur</span>
+        <h2 class="section-title-dark" data-i18n="contactTitle">Visit Our Store or Contact Us</h2>
       </div>
 
       <div class="contact-layout">
         <!-- Contact Details -->
-        <div class="contact-card">
+        <div class="contact-card-dark tilt-element">
           <h3>Lucky Mobile (லக்கி மொபைல்)</h3>
-          <p class="contact-tagline" data-i18n="storeTagline">Your Reliable Neighbourhood Smartphone & Service Specialist</p>
+          <p class="contact-tagline-dark" data-i18n="storeTagline">"Your Mobile Our Priority" — Multi-Brand Mobile Sales & Service Center</p>
 
           <div class="contact-items">
             <div class="contact-item">
-              <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot text-gold"></i>
               <div>
                 <strong data-i18n="addressLabel">Store Address:</strong>
                 <p>76, Tiruvannamalai Rd, Thamarai Nagar, Thirukkanur, Puducherry 605501</p>
@@ -477,16 +532,16 @@
             </div>
 
             <div class="contact-item">
-              <i class="fa-solid fa-clock"></i>
+              <i class="fa-solid fa-clock text-cyan"></i>
               <div>
                 <strong data-i18n="hoursLabel">Operating Hours:</strong>
                 <p>Monday – Sunday: 9:00 AM – 9:30 PM</p>
-                <span class="badge-open" data-i18n="allDaysOpen">Open All 7 Days</span>
+                <span class="badge-open-dark" data-i18n="allDaysOpen">Open All 7 Days</span>
               </div>
             </div>
 
             <div class="contact-item">
-              <i class="fa-solid fa-phone"></i>
+              <i class="fa-solid fa-phone text-gold"></i>
               <div>
                 <strong data-i18n="phoneLabel">Direct Call:</strong>
                 <p><a href="tel:+919876543210">+91 98765 43210</a></p>
@@ -494,7 +549,7 @@
             </div>
 
             <div class="contact-item">
-              <i class="fa-brands fa-whatsapp"></i>
+              <i class="fa-brands fa-whatsapp text-green"></i>
               <div>
                 <strong data-i18n="waSupportLabel">WhatsApp Instant Support:</strong>
                 <p><a href="https://wa.me/919876543210" target="_blank">+91 98765 43210</a></p>
@@ -503,16 +558,16 @@
           </div>
 
           <div class="store-directions-actions">
-            <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="btn btn-primary btn-block">
+            <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="btn btn-gold btn-block">
               <i class="fa-solid fa-location-arrow"></i> <span data-i18n="openInMaps">Open in Google Maps</span>
             </a>
           </div>
         </div>
 
         <!-- Embedded Map Frame -->
-        <div class="map-card">
-          <div class="map-header">
-            <span><i class="fa-solid fa-map-location-dot"></i> Store Location Map</span>
+        <div class="map-card-dark">
+          <div class="map-header-dark">
+            <span><i class="fa-solid fa-map-location-dot text-gold"></i> Store Location Map</span>
             <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="map-external-link">Full Screen <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           </div>
           <div class="map-container">
@@ -533,65 +588,70 @@
   </section>
 
   <!-- Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer-dark">
     <div class="container footer-content">
       <div class="footer-brand">
         <div class="logo">
-          <div class="logo-icon">
+          <div class="logo-icon-gold">
+            <i class="fa-solid fa-crown logo-crown"></i>
             <i class="fa-solid fa-mobile-screen-button"></i>
           </div>
           <div class="logo-text">
-            <span class="brand-en">Lucky Mobile</span>
+            <span class="brand-en">LUCKY MOBILE</span>
             <span class="brand-ta">லக்கி மொபைல்</span>
           </div>
         </div>
-        <p data-i18n="footerTagline">Serving Thirukkanur, Koodapakkam, Katterikuppam, and Puducherry with trusted smartphone deals and genuine repair services.</p>
+        <p data-i18n="footerTagline">"Your Mobile Our Priority" — Serving Thirukkanur, Koodapakkam, Katterikuppam, and Puducherry with trusted smartphone deals and genuine repair services.</p>
       </div>
 
       <div class="footer-links">
         <h4 data-i18n="quickLinks">Quick Links</h4>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#products">Phones</a></li>
-          <li><a href="#accessories">Accessories</a></li>
-          <li><a href="#services">Repairs</a></li>
-          <li><a href="#contact">Location</a></li>
+          <li><a href="#products">Smartphones</a></li>
+          <li><a href="#services-all">Store Services</a></li>
+          <li><a href="#services">Repair Estimator</a></li>
+          <li><a href="#contact">Location & Maps</a></li>
         </ul>
       </div>
 
       <div class="footer-brands">
         <h4 data-i18n="popularBrands">Brands Handled</h4>
         <ul>
-          <li>Apple iPhone & iPads</li>
-          <li>Samsung Galaxy & Fold</li>
-          <li>Vivo V & Y Series</li>
-          <li>Oppo Reno & F Series</li>
-          <li>Redmi & Poco Devices</li>
+          <li>Apple iPhone & Samsung</li>
+          <li>Vivo, Oppo & OnePlus</li>
+          <li>Xiaomi, Redmi & Poco</li>
+          <li>Realme, Tecno & Infinix</li>
+          <li>itel & All Keypad Mobiles</li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="container bottom-row">
         <p>&copy; <span id="yearSpan"></span> Lucky Mobile (லக்கி மொபைல்). All Rights Reserved.</p>
-        <p class="credit">Designed for Thirukkanur, Puducherry 605501</p>
+        <p class="credit">Thirukkanur, Puducherry 605501 • <i>Your Mobile Our Priority</i></p>
       </div>
     </div>
   </footer>
 
   <!-- Floating Mobile Action Bar -->
-  <div class="mobile-action-bar">
-    <a href="tel:+919876543210" class="mob-btn mob-call">
+  <div class="mobile-action-bar-dark">
+    <a href="tel:+919876543210" class="mob-btn-dark mob-call">
       <i class="fa-solid fa-phone"></i>
       <span>Call Now</span>
     </a>
-    <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20have%20an%20inquiry" target="_blank" class="mob-btn mob-wa">
+    <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20I%20have%20an%20inquiry" target="_blank" class="mob-btn-dark mob-wa">
       <i class="fa-brands fa-whatsapp"></i>
       <span>WhatsApp</span>
     </a>
-    <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="mob-btn mob-map">
+    <a href="https://maps.google.com/?q=76,+Tiruvannamalai+Rd,+Thamarai+Nagar,+Thirukkanur,+Puducherry+605501" target="_blank" class="mob-btn-dark mob-map">
       <i class="fa-solid fa-diamond-turn-right"></i>
       <span>Directions</span>
     </a>
+    <button class="mob-btn-dark mob-poster" id="mobilePosterOpenBtn">
+      <i class="fa-solid fa-image"></i>
+      <span>Flyer</span>
+    </button>
   </div>
 
   <!-- Custom Script -->
