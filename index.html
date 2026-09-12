@@ -315,18 +315,44 @@
         <p class="section-desc-dark" data-i18n="catDesc">Walk into our Thirukkanur store for live demo, easy EMI options, and instant exchange quotes.</p>
       </div>
 
-      <!-- Filter Controls -->
+      <!-- Filter & Search Controls (Search by Model Name and Company Name) -->
       <div class="filter-wrapper">
         <div class="search-box-dark">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="phoneSearchInput" placeholder="Search phone models (e.g. Vivo, iPhone, Samsung, Tecno)...">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="phoneSearchInput" placeholder="Search by model or company (e.g. Vivo, iPhone, Samsung, Tecno, Poco)..." data-i18n-placeholder="searchPlaceholder">
+          <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Clear search" style="display:none;">&times;</button>
         </div>
+
+        <!-- Quick Company / Brand Filter Tabs -->
+        <div class="company-tabs-dark" id="companyTabs">
+          <button class="company-tab active" data-brand="all" data-i18n="companyAll">All Companies</button>
+          <button class="company-tab" data-brand="Apple">Apple iPhone</button>
+          <button class="company-tab" data-brand="Samsung">Samsung</button>
+          <button class="company-tab" data-brand="Vivo">Vivo</button>
+          <button class="company-tab" data-brand="Oppo">Oppo</button>
+          <button class="company-tab" data-brand="OnePlus">OnePlus</button>
+          <button class="company-tab" data-brand="Xiaomi">Xiaomi / Redmi</button>
+          <button class="company-tab" data-brand="Realme">Realme</button>
+          <button class="company-tab" data-brand="Tecno">Tecno</button>
+          <button class="company-tab" data-brand="Infinix">Infinix</button>
+          <button class="company-tab" data-brand="POCO">POCO</button>
+          <button class="company-tab" data-brand="itel">itel</button>
+        </div>
+
+        <!-- Category Filter Tabs -->
         <div class="filter-tabs-dark">
-          <button class="filter-tab-dark active" data-filter="all" data-i18n="filterAll">All Phones</button>
+          <button class="filter-tab-dark active" data-filter="all" data-i18n="filterAll">All Mobiles</button>
           <button class="filter-tab-dark" data-filter="flagship" data-i18n="filterFlagship">Flagship / Premium</button>
           <button class="filter-tab-dark" data-filter="midrange" data-i18n="filterMid">Mid-Range (₹12k - ₹25k)</button>
           <button class="filter-tab-dark" data-filter="budget" data-i18n="filterBudget">Budget (Under ₹12k)</button>
           <button class="filter-tab-dark" data-filter="5g" data-i18n="filter5G">5G Specials</button>
+        </div>
+
+        <!-- Live Search & Filter Results Counter -->
+        <div class="search-stats-row">
+          <span class="search-count-badge" id="searchCountBadge">
+            <i class="fa-solid fa-mobile-screen text-gold"></i> <span id="searchCountNumber">15</span> <span data-i18n="modelsFound">mobiles available</span>
+          </span>
         </div>
       </div>
 
@@ -633,6 +659,29 @@
       </div>
     </div>
   </footer>
+
+  <!-- Fullscreen Mobile Details Lightbox Modal -->
+  <div class="specs-modal" id="specsModal" aria-hidden="true" role="dialog">
+    <div class="specs-modal-backdrop" id="closeSpecsBackdrop"></div>
+    <div class="specs-modal-dialog">
+      <div class="specs-modal-header">
+        <div class="specs-title-box">
+          <span class="specs-company-tag" id="modalCompanyTag">Company</span>
+          <h3 id="modalPhoneTitle">Phone Model</h3>
+          <span class="specs-modal-price" id="modalPhonePrice">₹00,000</span>
+        </div>
+        <button class="specs-modal-close" id="closeSpecsBtn" aria-label="Close specifications">&times;</button>
+      </div>
+      <div class="specs-modal-body" id="modalPhoneBody">
+        <!-- Injected dynamically via script.js -->
+      </div>
+      <div class="specs-modal-footer">
+        <a href="#" id="modalWhatsAppBtn" target="_blank" class="btn btn-whatsapp-full">
+          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="enquireThisPhone">Enquire Availability on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Floating Mobile Action Bar -->
   <div class="mobile-action-bar-dark">

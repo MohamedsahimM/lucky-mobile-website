@@ -4,11 +4,13 @@
  * 2. 3D Tilt Element Engine for Cards & Poster
  * 3. Corner Poster & Lightbox Modal Controller
  * 4. Bilingual translation (English <-> Tamil)
- * 5. Dynamic Smartphone Catalog with Category Filters & Search
- * 6. Instant Repair & Service Cost Estimator
+ * 5. Dynamic Smartphone Catalog with Real Photos, Detailed Specs & Company Filtering
+ * 6. Phone Details / Specifications Lightbox Modal
+ * 7. Instant Repair & Service Cost Estimator
  */
 
-// Phone Catalog Data (Reflecting multi-brand poster: iPhone, Samsung, Vivo, Oppo, OnePlus, Redmi, Realme, Tecno, Poco, Infinix)
+// Phone Catalog Data with High-Resolution Photos & Rich Specifications
+// Brands represented from official store flyer: Apple, Samsung, Vivo, Oppo, OnePlus, Xiaomi, Realme, Tecno, Infinix, POCO, itel
 const phonesData = [
   {
     id: 1,
@@ -19,9 +21,27 @@ const phonesData = [
     is5G: true,
     price: 34999,
     emi: "₹1,944/mo",
-    badge: "ZEISS Portrait",
+    image: "assets/phones/vivo-v40.jpg",
+    badge: "50MP ZEISS Portrait",
     badgeType: "offer",
-    specs: ["50MP ZEISS Camera", "5500 mAh Battery", "8GB RAM + 128GB"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP ZEISS OIS + 50MP Ultra-Wide" },
+      { icon: "fa-solid fa-microchip", text: "Snapdragon 7 Gen 3 (4nm)" },
+      { icon: "fa-solid fa-memory", text: "8GB / 12GB RAM + 256GB / 512GB" },
+      { icon: "fa-solid fa-battery-full", text: "5500 mAh + 80W FlashCharge" }
+    ],
+    details: {
+      processor: "Qualcomm Snapdragon 7 Gen 3 (4nm TSMC)",
+      display: "6.78\" 1.5K 120Hz 3D Curved AMOLED (4500 nits peak)",
+      rearCamera: "50MP ZEISS OIS (f/1.88) + 50MP Ultra-wide (119°)",
+      frontCamera: "50MP ZEISS Group Selfie Camera with AF",
+      battery: "5500 mAh BlueVolt Silicon-Carbon + 80W Fast Charge",
+      ramStorage: "8GB/12GB LPDDR4X + 256GB/512GB UFS 2.2",
+      os: "Funtouch OS 14 (Based on Android 14)",
+      colors: ["Ganges Blue", "Titanium Grey", "Lotus Purple"],
+      warranty: "1 Year Official Brand Warranty + Free Screen Protector",
+      highlights: "IP68 Water & Dust Resistance, Smart Aura Light Portrait"
+    }
   },
   {
     id: 2,
@@ -32,22 +52,58 @@ const phonesData = [
     is5G: true,
     price: 58999,
     emi: "₹4,916/mo",
-    badge: "Fest Special",
+    image: "assets/phones/iphone-15.jpg",
+    badge: "Dynamic Island",
     badgeType: "offer",
-    specs: ["Dynamic Island", "48MP Main Camera", "A16 Bionic Chip"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "48MP Main Camera (Sensor-shift OIS)" },
+      { icon: "fa-solid fa-microchip", text: "Apple A16 Bionic Chip" },
+      { icon: "fa-solid fa-memory", text: "6GB RAM + 128GB / 256GB NVMe" },
+      { icon: "fa-solid fa-battery-full", text: "All-Day Battery + USB-C" }
+    ],
+    details: {
+      processor: "Apple A16 Bionic (4nm) 6-core CPU + 5-core GPU",
+      display: "6.1\" Super Retina XDR OLED (2000 nits peak brightness)",
+      rearCamera: "48MP Main (f/1.6, Sensor-shift OIS) + 12MP Ultra-wide",
+      frontCamera: "12MP TrueDepth Camera with 4K Dolby Vision HDR",
+      battery: "3349 mAh with 20W Fast Charging (50% in 30 mins) + MagSafe",
+      ramStorage: "6GB RAM + 128GB / 256GB / 512GB NVMe",
+      os: "iOS 17 (Free Upgrade to iOS 18)",
+      colors: ["Black", "Blue", "Green", "Yellow", "Pink"],
+      warranty: "1 Year Apple India Warranty + Free Data Transfer",
+      highlights: "Dynamic Island, USB Type-C, Ceramic Shield Front Glass"
+    }
   },
   {
     id: 3,
-    name: "Samsung Galaxy S24 / A15",
+    name: "Samsung Galaxy S24 5G",
     brand: "Samsung",
     brandClass: "samsung",
-    category: "midrange",
+    category: "flagship",
     is5G: true,
-    price: 16499,
-    emi: "₹1,375/mo",
-    badge: "5G Bestseller",
-    badgeType: "5g",
-    specs: ["Super AMOLED 90Hz", "50MP Triple Camera", "5000 mAh Battery"]
+    price: 62999,
+    emi: "₹5,249/mo",
+    image: "assets/phones/samsung-s24.jpg",
+    badge: "Galaxy AI",
+    badgeType: "offer",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP Dual Pixel OIS + 3X Telephoto" },
+      { icon: "fa-solid fa-microchip", text: "Snapdragon 8 Gen 3 for Galaxy" },
+      { icon: "fa-solid fa-memory", text: "8GB RAM + 256GB UFS 4.0" },
+      { icon: "fa-solid fa-battery-full", text: "4000 mAh + 25W Fast Charge" }
+    ],
+    details: {
+      processor: "Snapdragon 8 Gen 3 / Exynos 2400 (4nm)",
+      display: "6.2\" Dynamic LTPO AMOLED 2X, 120Hz (2600 nits)",
+      rearCamera: "50MP Main (OIS) + 10MP Telephoto (3x Optical) + 12MP Ultra-wide",
+      frontCamera: "12MP Dual Pixel Autofocus Selfie",
+      battery: "4000 mAh + 25W Wired + 15W Wireless PowerShare",
+      ramStorage: "8GB LPDDR5X + 256GB / 512GB UFS 4.0",
+      os: "One UI 6.1 (7 Years Guaranteed OS & Security Updates)",
+      colors: ["Onyx Black", "Marble Gray", "Cobalt Violet", "Amber Yellow"],
+      warranty: "1 Year Samsung India Warranty + VIP Setup",
+      highlights: "Circle to Search with Google, Live Call Translation, Armor Aluminum 2"
+    }
   },
   {
     id: 4,
@@ -58,25 +114,247 @@ const phonesData = [
     is5G: true,
     price: 19999,
     emi: "₹1,666/mo",
+    image: "assets/phones/oneplus-nord.jpg",
     badge: "80W SuperVOOC",
     badgeType: "5g",
-    specs: ["Sony LYT-600 OIS", "5500 mAh Battery", "Dual Stereo Speakers"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP Sony LYT-600 OIS Camera" },
+      { icon: "fa-solid fa-microchip", text: "Snapdragon 695 5G" },
+      { icon: "fa-solid fa-memory", text: "8GB RAM + 128GB / 256GB" },
+      { icon: "fa-solid fa-battery-full", text: "5500 mAh + 80W SUPERVOOC" }
+    ],
+    details: {
+      processor: "Qualcomm Snapdragon 695 5G Octa-core",
+      display: "6.67\" 120Hz AMOLED (2100 nits peak brightness)",
+      rearCamera: "50MP Sony LYT-600 with Hardware OIS + 2MP Depth",
+      frontCamera: "16MP Clear HDR Selfie Camera",
+      battery: "5500 mAh Battery + 80W SuperVOOC + 5W Reverse Charge",
+      ramStorage: "8GB LPDDR4X + 128GB / 256GB UFS 2.2",
+      os: "OxygenOS 14.0 (Based on Android 14)",
+      colors: ["Mega Blue", "Super Silver"],
+      warranty: "1 Year OnePlus Official Warranty",
+      highlights: "Aqua Touch Technology, 300% Ultra Volume Dual Stereo Speakers"
+    }
   },
   {
     id: 5,
-    name: "Redmi Note 13 5G",
-    brand: "Redmi",
+    name: "Xiaomi Redmi Note 13 Pro 5G",
+    brand: "Xiaomi",
     brandClass: "redmi",
+    category: "midrange",
+    is5G: true,
+    price: 24999,
+    emi: "₹2,083/mo",
+    image: "assets/phones/redmi-note-13.jpg",
+    badge: "200MP OIS Camera",
+    badgeType: "5g",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "200MP Samsung ISOCELL HP3 (OIS)" },
+      { icon: "fa-solid fa-microchip", text: "Snapdragon 7s Gen 2 (4nm)" },
+      { icon: "fa-solid fa-memory", text: "8GB / 12GB RAM + 256GB" },
+      { icon: "fa-solid fa-battery-full", text: "5100 mAh + 67W Turbo Charge" }
+    ],
+    details: {
+      processor: "Qualcomm Snapdragon 7s Gen 2 (4nm)",
+      display: "6.67\" 1.5K 120Hz Curved CrystalRes AMOLED, Dolby Vision",
+      rearCamera: "200MP Ultra-clear Main (OIS) + 8MP Ultra-wide + 2MP Macro",
+      frontCamera: "16MP AI Beauty Camera",
+      battery: "5100 mAh + 67W Turbo Charger (In-box adapter)",
+      ramStorage: "8GB/12GB RAM + 128GB/256GB UFS 2.2",
+      os: "Xiaomi HyperOS (Android 14)",
+      colors: ["Coral Purple", "Midnight Black", "Arctic White"],
+      warranty: "1 Year Xiaomi India Warranty",
+      highlights: "Corning Gorilla Glass Victus, In-display Fingerprint with Heart Rate"
+    }
+  },
+  {
+    id: 6,
+    name: "Realme 12 Pro+ 5G",
+    brand: "Realme",
+    brandClass: "realme",
+    category: "midrange",
+    is5G: true,
+    price: 29999,
+    emi: "₹2,499/mo",
+    image: "assets/phones/realme-12-pro.jpg",
+    badge: "64MP Periscope",
+    badgeType: "offer",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "64MP Periscope (3X Optical, 120X Zoom)" },
+      { icon: "fa-solid fa-microchip", text: "Snapdragon 7s Gen 2 (4nm)" },
+      { icon: "fa-solid fa-memory", text: "8GB / 12GB RAM + 256GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 67W SUPERVOOC" }
+    ],
+    details: {
+      processor: "Qualcomm Snapdragon 7s Gen 2 5G (4nm)",
+      display: "6.7\" 120Hz Curved Vision OLED, 2160Hz PWM Dimming",
+      rearCamera: "64MP OV64B Periscope OIS + 50MP Sony IMX890 OIS + 8MP Wide",
+      frontCamera: "32MP Sony Selfie Sensor",
+      battery: "5000 mAh Massive Battery + 67W SuperVOOC Fast Charge",
+      ramStorage: "8GB/12GB RAM + 128GB/256GB UFS 3.1",
+      os: "realme UI 5.0 (Based on Android 14)",
+      colors: ["Submarine Blue", "Navigator Beige", "Explorer Red"],
+      warranty: "1 Year Realme Warranty + Case Included",
+      highlights: "Luxury Watch Design by Ollivier Savéo, Premium Vegan Leather"
+    }
+  },
+  {
+    id: 7,
+    name: "Samsung Galaxy A15 5G",
+    brand: "Samsung",
+    brandClass: "samsung",
     category: "midrange",
     is5G: true,
     price: 15999,
     emi: "₹1,333/mo",
-    badge: "108MP Camera",
+    image: "assets/phones/samsung-a15.jpg",
+    badge: "Super AMOLED",
     badgeType: "5g",
-    specs: ["108MP Super-clear Cam", "120Hz AMOLED Screen", "33W Fast Charger"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP Triple Camera + 5MP Wide" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 6100+ 5G (6nm)" },
+      { icon: "fa-solid fa-memory", text: "6GB / 8GB RAM + 128GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 25W Fast Charging" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 6100+ (6nm Octa-Core)",
+      display: "6.5\" Super AMOLED, 90Hz, 800 nits with Vision Booster",
+      rearCamera: "50MP Main (f/1.8) + 5MP Ultra-wide + 2MP Macro",
+      frontCamera: "13MP Selfie Camera",
+      battery: "5000 mAh All-day Battery + 25W Fast Charge",
+      ramStorage: "6GB/8GB RAM + 128GB (Expandable up to 1TB)",
+      os: "One UI 6.0 with 4 Generations of OS Upgrades",
+      colors: ["Blue Black", "Light Blue", "Blue"],
+      warranty: "1 Year Samsung India Warranty",
+      highlights: "Samsung Knox Vault Security, Side Fingerprint Sensor"
+    }
   },
   {
-    id: 6,
+    id: 8,
+    name: "Oppo Reno 11 5G",
+    brand: "Oppo",
+    brandClass: "oppo",
+    category: "midrange",
+    is5G: true,
+    price: 27999,
+    emi: "₹2,333/mo",
+    image: "assets/phones/oppo-reno-11.jpg",
+    badge: "Portrait Expert",
+    badgeType: "offer",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "32MP Telephoto Portrait + 50MP Sony OIS" },
+      { icon: "fa-solid fa-microchip", text: "MediaTek Dimensity 7050 (6nm)" },
+      { icon: "fa-solid fa-memory", text: "8GB RAM + 256GB Storage" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 67W SUPERVOOC" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 7050 (6nm)",
+      display: "6.7\" 120Hz 3D Curved AMOLED (1.07 Billion Colors)",
+      rearCamera: "50MP Sony LYT-600 OIS + 32MP Telephoto Portrait + 8MP Ultra-wide",
+      frontCamera: "32MP Sony Selfie with 4K Video Recording",
+      battery: "5000 mAh + 67W SUPERVOOC (100% in 45 mins)",
+      ramStorage: "8GB RAM + 256GB UFS 2.2",
+      os: "ColorOS 14 (Android 14)",
+      colors: ["Wave Green", "Rock Grey"],
+      warranty: "1 Year Oppo Official Warranty",
+      highlights: "Portrait Expert Engine, LinkBoost 360° Antenna Array"
+    }
+  },
+  {
+    id: 9,
+    name: "POCO X6 Pro 5G",
+    brand: "POCO",
+    brandClass: "vivo",
+    category: "midrange",
+    is5G: true,
+    price: 25999,
+    emi: "₹2,166/mo",
+    image: "assets/phones/poco-x6-pro.jpg",
+    badge: "Dimensity 8300-Ultra",
+    badgeType: "5g",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "64MP OIS Triple Camera Setup" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 8300-Ultra (1.4M AnTuTu)" },
+      { icon: "fa-solid fa-memory", text: "8GB / 12GB LPDDR5X + 256GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 67W Turbo Charge" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 8300-Ultra Flagship Processor (4nm)",
+      display: "6.67\" 1.5K Flow AMOLED, 120Hz, 1800 nits, Dolby Vision",
+      rearCamera: "64MP Main (OIS + EIS) + 8MP Ultra-wide + 2MP Macro",
+      frontCamera: "16MP HDR Front Camera",
+      battery: "5000 mAh + 67W Turbo Fast Charger In Box",
+      ramStorage: "8GB/12GB LPDDR5X + 256GB/512GB UFS 4.0",
+      os: "Xiaomi HyperOS (Android 14)",
+      colors: ["POCO Yellow (Vegan Leather)", "Racing Grey", "Spectre Black"],
+      warranty: "1 Year Official Brand Warranty",
+      highlights: "LiquidCool 2.0 Vapor Chamber, Dual Stereo Dolby Atmos Speakers"
+    }
+  },
+  {
+    id: 10,
+    name: "Tecno Spark 20 Pro+",
+    brand: "Tecno",
+    brandClass: "vivo",
+    category: "budget",
+    is5G: true,
+    price: 14999,
+    emi: "₹1,249/mo",
+    image: "assets/phones/tecno-spark-20.jpg",
+    badge: "108MP Curved AMOLED",
+    badgeType: "offer",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "108MP Ultra Sensing Camera" },
+      { icon: "fa-solid fa-microchip", text: "Helio G99 Ultimate 6nm" },
+      { icon: "fa-solid fa-memory", text: "8GB (+8GB Virtual) + 256GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 33W Super Charge" }
+    ],
+    details: {
+      processor: "MediaTek Helio G99 Ultimate Octa-Core (6nm)",
+      display: "6.78\" 120Hz 3D Curved AMOLED, 1000 nits, Gorilla Glass 5",
+      rearCamera: "108MP Main Sensor with 3X Lossless In-sensor Zoom",
+      frontCamera: "32MP Glowing Selfie with Dual Micro-slit Flash",
+      battery: "5000 mAh + 33W Type-C Super Fast Charge",
+      ramStorage: "8GB RAM (+8GB Extended) + 256GB ROM",
+      os: "HiOS 14 (Based on Android 14)",
+      colors: ["Temporal Orbits", "Lunar Frost", "Magic Skin 2.0 Green"],
+      warranty: "1 Year Official Warranty",
+      highlights: "Dual Stereo DTS Speakers (400% Volume), IP53 Dust/Water Resistant"
+    }
+  },
+  {
+    id: 11,
+    name: "Infinix Note 40 Pro 5G",
+    brand: "Infinix",
+    brandClass: "vivo",
+    category: "midrange",
+    is5G: true,
+    price: 21999,
+    emi: "₹1,833/mo",
+    image: "assets/phones/infinix-note-40.jpg",
+    badge: "100W + Wireless Mag",
+    badgeType: "5g",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "108MP OIS Super-Zoom Camera" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 7020 5G (6nm)" },
+      { icon: "fa-solid fa-memory", text: "8GB RAM + 256GB Storage" },
+      { icon: "fa-solid fa-battery-full", text: "100W All-Round FastCharge + 20W Mag" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 7020 5G Processor",
+      display: "6.78\" 3D Curved 120Hz AMOLED, 1300 nits, Corning Gorilla Glass",
+      rearCamera: "108MP Super-Zoom with OIS + 2MP + 2MP AI",
+      frontCamera: "32MP Front Camera with Dual LED Flash",
+      battery: "5000 mAh + 100W Wired FastCharge + 20W Wireless MagCharge",
+      ramStorage: "8GB RAM (+8GB Extended) + 256GB UFS 2.2",
+      os: "XOS 14 (Android 14)",
+      colors: ["Vintage Green (Vegan Leather)", "Titan Gold"],
+      warranty: "1 Year Brand Warranty",
+      highlights: "Active Halo AI Breathing Light, Dual Speakers Tuned by JBL"
+    }
+  },
+  {
+    id: 12,
     name: "Realme 12x 5G",
     brand: "Realme",
     brandClass: "realme",
@@ -84,35 +362,120 @@ const phonesData = [
     is5G: true,
     price: 11999,
     emi: "₹999/mo",
+    image: "assets/phones/realme-12x.jpg",
     badge: "Budget 5G King",
     badgeType: "5g",
-    specs: ["Dimensity 6100+ 5G", "45W SuperVOOC Charge", "120Hz Display"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP AI Primary Camera" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 6100+ 5G (6nm)" },
+      { icon: "fa-solid fa-memory", text: "6GB / 8GB RAM + 128GB ROM" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 45W SUPERVOOC" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 6100+ 5G (6nm)",
+      display: "6.72\" 120Hz FHD+ Display, 950 nits peak brightness",
+      rearCamera: "50MP AI Dual Camera with Night Scene Mode",
+      frontCamera: "8MP AI Selfie Camera",
+      battery: "5000 mAh + 45W SuperVOOC Charge (0-50% in 30 mins)",
+      ramStorage: "6GB/8GB RAM + 128GB (Expandable up to 2TB)",
+      os: "realme UI 5.0 (Android 14)",
+      colors: ["Twilight Purple", "Woodland Green"],
+      warranty: "1 Year Realme India Warranty",
+      highlights: "Air Gestures, Rainwater Smart Touch, Dual Stereo Speakers"
+    }
   },
   {
-    id: 7,
-    name: "Tecno Spark 20 Pro+ / POCO X6",
-    brand: "Tecno",
+    id: 13,
+    name: "Vivo Y28 5G",
+    brand: "Vivo",
     brandClass: "vivo",
     category: "budget",
     is5G: true,
-    price: 14499,
-    emi: "₹1,208/mo",
-    badge: "Curved AMOLED",
-    badgeType: "offer",
-    specs: ["108MP Camera", "120Hz Curved AMOLED", "Helio G99 Ultimate"]
+    price: 13999,
+    emi: "₹1,166/mo",
+    image: "assets/phones/vivo-y28.jpg",
+    badge: "Crystal Design",
+    badgeType: "normal",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP Ultra Clear + 2MP Bokeh" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 6020 5G (7nm)" },
+      { icon: "fa-solid fa-memory", text: "6GB RAM + 128GB ROM" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 15W Fast Charge" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 6020 5G Octa-core",
+      display: "6.56\" 90Hz Sunlight Display, High Brightness Mode",
+      rearCamera: "50MP HD Main + 2MP Bokeh Camera",
+      frontCamera: "8MP with Aura Screen Light",
+      battery: "5000 mAh Long-lasting Battery + 15W Charge",
+      ramStorage: "6GB RAM (+6GB Extended) + 128GB ROM",
+      os: "Funtouch OS 13 (Android 13)",
+      colors: ["Crystal Purple", "Glitter Aqua"],
+      warranty: "1 Year Vivo India Warranty",
+      highlights: "8.09mm Ultra-slim Body, IP54 Splash Resistance"
+    }
   },
   {
-    id: 8,
-    name: "Redmi 13C / Itel 5G",
-    brand: "Redmi",
+    id: 14,
+    name: "Xiaomi Redmi 13C",
+    brand: "Xiaomi",
     brandClass: "redmi",
     category: "budget",
     is5G: false,
     price: 7999,
     emi: "₹799/mo",
+    image: "assets/phones/redmi-13c.jpg",
     badge: "Top Budget Value",
     badgeType: "normal",
-    specs: ["50MP AI Camera", "5000 mAh Battery", "90Hz Smooth Display"]
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP AI Triple Camera" },
+      { icon: "fa-solid fa-microchip", text: "MediaTek Helio G85" },
+      { icon: "fa-solid fa-memory", text: "4GB / 6GB / 8GB + 128GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 18W Type-C" }
+    ],
+    details: {
+      processor: "MediaTek Helio G85 Octa-Core Processor",
+      display: "6.74\" 90Hz Smooth Display, Corning Gorilla Glass",
+      rearCamera: "50MP Main + 2MP Macro + Auxiliary Lens",
+      frontCamera: "8MP Selfie with Soft-light Ring",
+      battery: "5000 mAh + 18W Fast Charging via Type-C",
+      ramStorage: "4GB/6GB/8GB RAM + 128GB/256GB",
+      os: "MIUI 14 (Android 13)",
+      colors: ["Starshine Green", "Stardust Black", "Glacier White"],
+      warranty: "1 Year Xiaomi Official Warranty",
+      highlights: "Fingerprint Sensor, 3.5mm Headphone Jack, 5000mAh Battery"
+    }
+  },
+  {
+    id: 15,
+    name: "itel ColorPro 5G",
+    brand: "itel",
+    brandClass: "vivo",
+    category: "budget",
+    is5G: true,
+    price: 9999,
+    emi: "₹833/mo",
+    image: "assets/phones/itel-colorpro.jpg",
+    badge: "Color Changing 5G",
+    badgeType: "5g",
+    specs: [
+      { icon: "fa-solid fa-camera", text: "50MP AI Dual Camera" },
+      { icon: "fa-solid fa-microchip", text: "Dimensity 6080 5G (6nm)" },
+      { icon: "fa-solid fa-memory", text: "6GB (+6GB Virtual) + 128GB" },
+      { icon: "fa-solid fa-battery-full", text: "5000 mAh + 18W Fast Charge" }
+    ],
+    details: {
+      processor: "MediaTek Dimensity 6080 5G (6nm High Performance)",
+      display: "6.6\" HD+ IPS Display, 90Hz Smooth Refresh Rate",
+      rearCamera: "50MP AI Dual Camera with Super Night Mode",
+      frontCamera: "8MP Front Camera with LED Flash",
+      battery: "5000 mAh Battery + 18W Fast Charging Type-C",
+      ramStorage: "6GB RAM (+6GB Virtual) + 128GB Internal Storage",
+      os: "itel OS 13 (Android 13)",
+      colors: ["River Blue", "Lavender Fantasy (Color Changing Back)"],
+      warranty: "1 Year itel Warranty + Free Screen Replacement in 100 Days",
+      highlights: "India's Most Affordable 5G, IVO Color-shift Technology"
+    }
   }
 ];
 
@@ -171,14 +534,19 @@ const translations = {
     srv5: "Accessories Installation",
     srv6: "Mobile Recharges & Bill Payments",
     calcRepairQuoteBtn: "Calculate Repair Quote",
-    catSubtitle: "Flagships, Mid-Rangers & Budget Bestsellers",
+    catSubtitle: "Search by Model Name & Company",
     catTitle: "Featured Smartphones in Stock",
-    catDesc: "Walk into our Thirukkanur store for live demo, easy EMI options, and instant exchange quotes.",
-    filterAll: "All Phones",
+    catDesc: "Live demo, all brand photos, exact specifications, easy EMI options, and instant exchange quotes.",
+    searchPlaceholder: "Search by model or company (e.g. Vivo, iPhone, Samsung, Tecno, Poco)...",
+    companyAll: "All Companies",
+    filterAll: "All Mobiles",
     filterFlagship: "Flagship / Premium",
     filterMid: "Mid-Range (₹12k - ₹25k)",
     filterBudget: "Budget (Under ₹12k)",
     filter5G: "5G Specials",
+    modelsFound: "mobiles available in stock",
+    viewSpecsBtn: "View Specs",
+    enquireThisPhone: "Enquire Availability on WhatsApp",
     accSubtitle: "Keep Your Phone Powered & Protected",
     accTitle: "Must-Have Mobile Accessories",
     accDesc: "100% genuine chargers, fast charging cables, high-bass earbuds, smartwatches, and unbreakable screen guards.",
@@ -282,14 +650,19 @@ const translations = {
     srv5: "டெம்பர்டு கிளாஸ் & ஸ்கிரீன் கார்டு",
     srv6: "ரீசார்ஜ் மற்றும் பில் பேமெண்ட்ஸ்",
     calcRepairQuoteBtn: "சர்வீஸ் கட்டணம் அறிய",
-    catSubtitle: "டாப் மாடல்கள் & பட்ஜெட் போன்கள்",
+    catSubtitle: "மாடல் & நிறுவனம் வாரியாக தேடுங்கள்",
     catTitle: "விற்பனைக்கு உள்ள மொபைல்கள்",
-    catDesc: "நேரடி செயல்முறை விளக்கம், எளிதான தவணை மற்றும் சிறந்த எக்ஸ்சேஞ்ச் சலுகைகளுக்கு உடனே வாருங்கள்.",
+    catDesc: "அனைத்து பிராண்ட் புகைப்படங்கள், முழு விபரங்கள் மற்றும் எளிதான தவணை சலுகைகளுக்கு உடனே வாருங்கள்.",
+    searchPlaceholder: "மாடல் அல்லது பிராண்ட் பெயரை தேடவும் (எ.கா: Vivo, iPhone, Samsung, Tecno)...",
+    companyAll: "அனைத்து பிராண்டுகள்",
     filterAll: "அனைத்து போன்கள்",
     filterFlagship: "பிரீமியம் போன்கள்",
     filterMid: "நடுத்தர விலை (₹12k - ₹25k)",
     filterBudget: "பட்ஜெட் (₹12k கீழ்)",
     filter5G: "5G போன்கள்",
+    modelsFound: "மொபைல்கள் கையிருப்பில் உள்ளன",
+    viewSpecsBtn: "முழு விபரம்",
+    enquireThisPhone: "வாட்ஸ்அப்பில் விசாரிக்க",
     accSubtitle: "மொபைல் பாதுகாப்பு மற்றும் உபகரணங்கள்",
     accTitle: "அனைத்து மொபைல் ஆக்சஸரீஸ்",
     accDesc: "100% ஒரிஜினல் ஃபாஸ்ட் சார்ஜர்கள், கேபிள்கள், ஹெட்போன்கள், ஸ்மார்ட்வாட்ச் மற்றும் டெம்பர்டு கிளாஸ்.",
@@ -343,6 +716,9 @@ const translations = {
 };
 
 let currentLang = "en";
+let activeCategoryFilter = "all";
+let activeBrandFilter = "all";
+let currentSearchTerm = "";
 
 // Initialize on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
@@ -357,10 +733,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. Setup Corner Poster Lightbox Modal
   initPosterModal();
 
-  // 4. Render Smartphone Catalog
-  renderProducts(phonesData);
+  // 4. Setup Specs Modal
+  initSpecsModal();
 
-  // 5. Filters, Search, Estimator, and Translations
+  // 5. Initial Render with Full Dataset
+  applyFilters();
+
+  // 6. Setup Company Tabs, Category Tabs, and Search
+  setupCompanyTabs();
   setupFilterTabs();
   setupSearch();
   setupRepairCalculator();
@@ -385,7 +765,6 @@ function initTouchInteractiveCanvas() {
     height = canvas.height = window.innerHeight;
   });
 
-  // Particle constellation
   const particleCount = Math.min(Math.floor(window.innerWidth / 18), 70);
   const particles = [];
 
@@ -400,7 +779,6 @@ function initTouchInteractiveCanvas() {
     });
   }
 
-  // Pointer position tracking (mouse & touch)
   const pointer = { x: -1000, y: -1000, active: false, radius: 180 };
 
   function updatePointer(x, y) {
@@ -415,7 +793,6 @@ function initTouchInteractiveCanvas() {
     }
   }
 
-  // Mouse events
   window.addEventListener("mousemove", (e) => {
     updatePointer(e.clientX, e.clientY);
   });
@@ -425,7 +802,6 @@ function initTouchInteractiveCanvas() {
     if (spotlight) spotlight.style.opacity = "0";
   });
 
-  // Touch events (Mobile touching effect)
   window.addEventListener("touchmove", (e) => {
     if (e.touches.length > 0) {
       updatePointer(e.touches[0].clientX, e.touches[0].clientY);
@@ -440,7 +816,6 @@ function initTouchInteractiveCanvas() {
     }
   }, { passive: true });
 
-  // Touch click ripple anywhere
   window.addEventListener("click", (e) => {
     createTouchRipple(e.clientX, e.clientY);
   });
@@ -460,36 +835,30 @@ function initTouchInteractiveCanvas() {
     }, 850);
   }
 
-  // Animation Loop
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Update & Draw Particles
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap around bounds
       if (p.x < 0) p.x = width;
       if (p.x > width) p.x = 0;
       if (p.y < 0) p.y = height;
       if (p.y > height) p.y = 0;
 
-      // Reaction to touch/pointer
       let distFromPointer = 9999;
       if (pointer.active) {
         const dx = pointer.x - p.x;
         const dy = pointer.y - p.y;
         distFromPointer = Math.sqrt(dx * dx + dy * dy);
 
-        // Gentle interactive pull toward pointer
         if (distFromPointer < pointer.radius) {
           const force = (1 - distFromPointer / pointer.radius) * 0.9;
           p.x += (dx / distFromPointer) * force;
           p.y += (dy / distFromPointer) * force;
 
-          // Draw glowing filament to pointer
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(pointer.x, pointer.y);
@@ -499,14 +868,12 @@ function initTouchInteractiveCanvas() {
         }
       }
 
-      // Draw particle dot
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       const alpha = distFromPointer < pointer.radius ? 0.9 : 0.45;
       ctx.fillStyle = `${p.baseColor}${alpha})`;
       ctx.fill();
 
-      // Connect nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
@@ -544,10 +911,10 @@ function init3DTiltEngine() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -7;
-      const rotateY = ((x - centerX) / centerX) * 7;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
 
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
     });
 
     el.addEventListener("mouseleave", () => {
@@ -603,46 +970,215 @@ function initPosterModal() {
 }
 
 // ==========================================================================
-// 4. RENDER SMARTPHONES (WITH DARK CARD STYLING & 3D TILT)
+// 4. PHONE DETAILS / SPECIFICATIONS LIGHTBOX MODAL
+// ==========================================================================
+function initSpecsModal() {
+  const modal = document.getElementById("specsModal");
+  const closeBtn = document.getElementById("closeSpecsBtn");
+  const backdrop = document.getElementById("closeSpecsBackdrop");
+
+  function closeModal() {
+    if (modal) modal.classList.remove("active");
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (backdrop) backdrop.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+}
+
+function openSpecsModal(phoneId) {
+  const phone = phonesData.find(p => p.id === phoneId);
+  if (!phone) return;
+
+  const modal = document.getElementById("specsModal");
+  const companyTag = document.getElementById("modalCompanyTag");
+  const title = document.getElementById("modalPhoneTitle");
+  const price = document.getElementById("modalPhonePrice");
+  const body = document.getElementById("modalPhoneBody");
+  const waBtn = document.getElementById("modalWhatsAppBtn");
+
+  companyTag.textContent = phone.brand;
+  title.textContent = phone.name;
+  price.textContent = `₹${phone.price.toLocaleString('en-IN')} (EMI from ${phone.emi})`;
+
+  const d = phone.details;
+  const isTa = currentLang === "ta";
+
+  body.innerHTML = `
+    <div class="modal-photo-column">
+      <img src="${phone.image}" alt="${phone.name}" class="modal-phone-img-large" onerror="this.src='lucky-mobile-poster.jpg'">
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold); text-align: center;">
+        ${isTa ? "கிடைக்கும் நிறங்கள்:" : "Colors in Stock:"}
+      </div>
+      <div class="modal-color-pills">
+        ${d.colors.map(c => `<span class="modal-color-pill">${c}</span>`).join('')}
+      </div>
+    </div>
+    <div class="modal-specs-table">
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-microchip"></i> ${isTa ? "பிராசஸர்" : "Processor"}</span>
+        <span class="spec-val">${d.processor}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-mobile-screen"></i> ${isTa ? "திரை (Display)" : "Display"}</span>
+        <span class="spec-val">${d.display}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-camera"></i> ${isTa ? "பின்புற கேமரா" : "Rear Camera"}</span>
+        <span class="spec-val">${d.rearCamera}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-camera-rotate"></i> ${isTa ? "செல்ஃபி கேமரா" : "Front Camera"}</span>
+        <span class="spec-val">${d.frontCamera}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-battery-full"></i> ${isTa ? "பேட்டரி / சார்ஜ்" : "Battery"}</span>
+        <span class="spec-val">${d.battery}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-memory"></i> ${isTa ? "ரேம் & மெமரி" : "RAM & Storage"}</span>
+        <span class="spec-val">${d.ramStorage}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-gear"></i> ${isTa ? "இயங்குதளம்" : "OS & UI"}</span>
+        <span class="spec-val">${d.os}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-shield-halved"></i> ${isTa ? "உத்தரவாதம்" : "Warranty"}</span>
+        <span class="spec-val">${d.warranty}</span>
+      </div>
+      <div class="modal-spec-row">
+        <span class="spec-label"><i class="fa-solid fa-star"></i> ${isTa ? "சிறப்பம்சங்கள்" : "Key Feature"}</span>
+        <span class="spec-val text-cyan">${d.highlights}</span>
+      </div>
+    </div>
+  `;
+
+  const waMsg = encodeURIComponent(`Hi Lucky Mobile, I am inquiring about the ${phone.name} (Company: ${phone.brand}, Price: ₹${phone.price.toLocaleString('en-IN')}).
+Specs: ${d.ramStorage}, ${d.processor}.
+Do you have it ready in your Thirukkanur shop?`);
+
+  waBtn.href = `https://wa.me/919876543210?text=${waMsg}`;
+
+  modal.classList.add("active");
+}
+
+// ==========================================================================
+// 5. COMBINED SEARCH & FILTER ENGINE
+// ==========================================================================
+function applyFilters() {
+  const term = currentSearchTerm.toLowerCase().trim();
+
+  const filtered = phonesData.filter(phone => {
+    // 1. Category Filter
+    let matchesCategory = true;
+    if (activeCategoryFilter === "5g") {
+      matchesCategory = phone.is5G;
+    } else if (activeCategoryFilter !== "all") {
+      matchesCategory = phone.category === activeCategoryFilter;
+    }
+
+    // 2. Company / Brand Filter
+    let matchesBrand = true;
+    if (activeBrandFilter !== "all") {
+      matchesBrand = phone.brand.toLowerCase() === activeBrandFilter.toLowerCase();
+    }
+
+    // 3. Search Term Filter (Checks Model Name, Company Name, Specs, and Details)
+    let matchesSearch = true;
+    if (term) {
+      const nameMatch = phone.name.toLowerCase().includes(term);
+      const brandMatch = phone.brand.toLowerCase().includes(term);
+      const specsMatch = phone.specs.some(s => s.text.toLowerCase().includes(term));
+      const detailsMatch = Object.values(phone.details).some(v => 
+        typeof v === 'string' && v.toLowerCase().includes(term)
+      );
+      matchesSearch = nameMatch || brandMatch || specsMatch || detailsMatch;
+    }
+
+    return matchesCategory && matchesBrand && matchesSearch;
+  });
+
+  // Update Result Count
+  const countSpan = document.getElementById("searchCountNumber");
+  if (countSpan) countSpan.textContent = filtered.length;
+
+  renderProducts(filtered);
+}
+
+// ==========================================================================
+// 6. RENDER SMARTPHONES WITH REAL PHOTOS & SPECIFICATIONS
 // ==========================================================================
 function renderProducts(items) {
   const container = document.getElementById("productGrid");
   if (!items || items.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
-        <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 12px; color: var(--text-dim);"></i>
-        <p>No phone models found matching your search. Contact us on WhatsApp for special stock requests!</p>
+      <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-lg); border: 1px dashed var(--border-glass);">
+        <i class="fa-solid fa-mobile-screen-button" style="font-size: 3.5rem; margin-bottom: 14px; color: var(--gold);"></i>
+        <h4 style="color:#fff; margin-bottom: 8px;">No mobile phones matched your search</h4>
+        <p style="margin-bottom: 18px;">We sell all major models from Apple, Samsung, Vivo, Oppo, Xiaomi, Realme, Tecno, Infinix, and itel!</p>
+        <a href="https://wa.me/919876543210?text=Hi%20Lucky%20Mobile,%20do%20you%20have%20this%20phone%20model%20in%20stock?" target="_blank" class="btn btn-gold">
+          <i class="fa-brands fa-whatsapp"></i> Enquire Custom Model on WhatsApp
+        </a>
       </div>
     `;
     return;
   }
 
   const buyBtnText = translations[currentLang].btnBuyWa || "Enquire";
+  const viewSpecsText = translations[currentLang].viewSpecsBtn || "View Specs";
 
   container.innerHTML = items.map(phone => {
-    const waText = encodeURIComponent(`Hi Lucky Mobile, I am interested in checking stock/price for ${phone.name} (₹${phone.price.toLocaleString('en-IN')}). Is it available in your Thirukkanur shop?`);
+    const waText = encodeURIComponent(`Hi Lucky Mobile, I am interested in ${phone.name} (${phone.brand}) priced at ₹${phone.price.toLocaleString('en-IN')}. Is this in stock at your Thirukkanur shop?`);
     return `
-      <div class="product-card-dark tilt-element" data-category="${phone.category}">
+      <div class="product-card-dark tilt-element" data-category="${phone.category}" data-brand="${phone.brand}">
         <span class="product-badge-dark badge-${phone.badgeType}">${phone.badge}</span>
-        <div class="product-img-box">
-          <div class="product-phone-icon-dark">
-            <span class="phone-cam"></span>
-            <span class="phone-screen-text">${phone.brand}</span>
-          </div>
+        
+        <!-- Real Mobile Photo -->
+        <div class="product-photo-wrap" onclick="openSpecsModal(${phone.id})" title="Click to view full specifications">
+          <img src="${phone.image}" alt="${phone.brand} ${phone.name}" class="product-photo-img" loading="lazy" onerror="this.src='lucky-mobile-poster.jpg'">
+          <span class="photo-overlay-badge"><i class="fa-solid fa-magnifying-glass-plus"></i> Specs</span>
         </div>
-        <span class="product-brand">${phone.brand}</span>
-        <h3 class="product-title">${phone.name}</h3>
-        <div class="product-specs">
-          ${phone.specs.map(spec => `<span><i class="fa-solid fa-check"></i> ${spec}</span>`).join('')}
+
+        <div class="product-header-info">
+          <span class="product-company-pill">${phone.brand}</span>
+          ${phone.is5G ? '<span style="font-size:0.7rem; font-weight:800; color:var(--cyan);"><i class="fa-solid fa-bolt"></i> 5G</span>' : ''}
         </div>
+
+        <h3 class="product-title" onclick="openSpecsModal(${phone.id})" style="cursor:pointer;" title="Click for details">${phone.name}</h3>
+
+        <!-- Key Specifications Chips -->
+        <div class="product-specs-chips">
+          ${phone.specs.map(spec => `
+            <div class="spec-chip-item">
+              <i class="${spec.icon}"></i>
+              <span>${spec.text}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Price & Dual Action Buttons -->
         <div class="product-footer">
-          <div class="price-wrapper">
-            <span class="price-val">₹${phone.price.toLocaleString('en-IN')}</span>
+          <div class="price-row">
+            <div>
+              <span class="price-val">₹${phone.price.toLocaleString('en-IN')}</span>
+            </div>
             <span class="emi-val">EMI from ${phone.emi}</span>
           </div>
-          <a href="https://wa.me/919876543210?text=${waText}" target="_blank" class="btn-buy-wa">
-            <i class="fa-brands fa-whatsapp"></i> ${buyBtnText}
-          </a>
+
+          <div class="product-actions-group">
+            <button type="button" class="btn-view-specs" onclick="openSpecsModal(${phone.id})">
+              <i class="fa-solid fa-circle-info text-gold"></i> ${viewSpecsText}
+            </button>
+            <a href="https://wa.me/919876543210?text=${waText}" target="_blank" class="btn-buy-wa">
+              <i class="fa-brands fa-whatsapp"></i> ${buyBtnText}
+            </a>
+          </div>
         </div>
       </div>
     `;
@@ -652,48 +1188,55 @@ function renderProducts(items) {
   init3DTiltEngine();
 }
 
-// Category Tabs
+// ==========================================================================
+// 7. SETUP EVENT LISTENERS (COMPANY TABS, CATEGORIES, SEARCH, CLEAR)
+// ==========================================================================
+function setupCompanyTabs() {
+  const tabs = document.querySelectorAll(".company-tab");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      activeBrandFilter = tab.getAttribute("data-brand") || "all";
+      applyFilters();
+    });
+  });
+}
+
 function setupFilterTabs() {
   const tabs = document.querySelectorAll(".filter-tab-dark");
   tabs.forEach(tab => {
     tab.addEventListener("click", () => {
       tabs.forEach(t => t.classList.remove("active"));
       tab.classList.add("active");
-
-      const filter = tab.getAttribute("data-filter");
-      let filtered = [];
-
-      if (filter === "all") {
-        filtered = phonesData;
-      } else if (filter === "5g") {
-        filtered = phonesData.filter(p => p.is5G);
-      } else {
-        filtered = phonesData.filter(p => p.category === filter);
-      }
-
-      renderProducts(filtered);
+      activeCategoryFilter = tab.getAttribute("data-filter") || "all";
+      applyFilters();
     });
   });
 }
 
-// Search
 function setupSearch() {
   const searchInput = document.getElementById("phoneSearchInput");
+  const clearBtn = document.getElementById("clearSearchBtn");
   if (!searchInput) return;
 
   searchInput.addEventListener("input", (e) => {
-    const term = e.target.value.toLowerCase().trim();
-    if (!term) {
-      renderProducts(phonesData);
-      return;
+    currentSearchTerm = e.target.value;
+    if (clearBtn) {
+      clearBtn.style.display = currentSearchTerm.length > 0 ? "flex" : "none";
     }
-    const filtered = phonesData.filter(p => 
-      p.name.toLowerCase().includes(term) ||
-      p.brand.toLowerCase().includes(term) ||
-      p.specs.some(s => s.toLowerCase().includes(term))
-    );
-    renderProducts(filtered);
+    applyFilters();
   });
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      currentSearchTerm = "";
+      clearBtn.style.display = "none";
+      applyFilters();
+      searchInput.focus();
+    });
+  }
 }
 
 // Repair Calculator
@@ -776,13 +1319,14 @@ function applyTranslations() {
     }
   });
 
-  const currentActiveTab = document.querySelector(".filter-tab-dark.active");
-  const filter = currentActiveTab ? currentActiveTab.getAttribute("data-filter") : "all";
-  let items = phonesData;
-  if (filter === "5g") items = phonesData.filter(p => p.is5G);
-  else if (filter !== "all") items = phonesData.filter(p => p.category === filter);
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (dict[key]) {
+      el.placeholder = dict[key];
+    }
+  });
 
-  renderProducts(items);
+  applyFilters();
 }
 
 // Mobile Menu
@@ -802,3 +1346,6 @@ function setupMobileMenu() {
     });
   });
 }
+
+// Expose openSpecsModal globally for inline onclick
+window.openSpecsModal = openSpecsModal;
