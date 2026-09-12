@@ -1,0 +1,18 @@
+{
+  "name": "lucky-mobile-website",
+  "version": "2.0.0",
+  "description": "Lucky Mobile (லக்கி மொபைல்) - Full-stack website with 3D flip-flop cards, Indian market smartphone catalog, and GPay/PhonePe UPI checkout",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "keywords": ["mobile", "ecommerce", "gpay", "phonepe", "upi", "3d-flip", "smartphones"],
+  "author": "Lucky Mobile",
+  "license": "MIT"
+}

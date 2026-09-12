@@ -1279,32 +1279,112 @@ img {
   gap: 6px;
 }
 
-/* Product Grid & Cards with Real Photos */
+/* ==========================================================================
+   PRODUCT CATALOG (3D FLIP-FLOP CARDS WITH REAL PHOTOS & REAR CAMERA MODULE)
+   ========================================================================== */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 28px;
 }
 
-.product-card-dark {
+/* 3D Flip Card Container */
+.flip-card-container {
+  perspective: 1400px;
+  min-height: 560px;
+  position: relative;
+  background: transparent;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back common card styles */
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
   padding: 18px;
-  transition: var(--transition);
   display: flex;
   flex-direction: column;
-  position: relative;
   box-shadow: var(--shadow-dark);
-  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-card-dark:hover {
-  transform: translateY(-6px);
+.flip-card-front {
+  position: relative;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  background: linear-gradient(165deg, #101626 0%, #090d16 100%);
+  border-color: rgba(56, 189, 248, 0.25);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.flip-card-container:hover .flip-card-front,
+.flip-card-container:hover .flip-card-back {
   border-color: var(--border-gold);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75), var(--shadow-gold);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), var(--shadow-gold);
 }
 
+/* 3D Flip Toggle Badge */
+.flip-badge-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(14, 19, 31, 0.85);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  z-index: 6;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(8px);
+  transition: var(--transition);
+}
+
+.flip-badge-toggle:hover {
+  background: var(--gold);
+  color: #080a10;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.flip-badge-toggle i {
+  transition: transform 0.4s ease;
+}
+
+.flip-card-inner.is-flipped .flip-badge-toggle i {
+  transform: rotate(180deg);
+}
+
+/* Product Badge on Front */
 .product-badge-dark {
   position: absolute;
   top: 14px;
@@ -1355,7 +1435,7 @@ img {
   transition: transform 0.4s ease;
 }
 
-.product-card-dark:hover .product-photo-img {
+.flip-card-container:hover .product-photo-img {
   transform: scale(1.06);
 }
 
@@ -1409,7 +1489,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-size: 0.8rem;
   color: #cbd5e1;
 }
@@ -1435,10 +1515,10 @@ img {
 .product-footer {
   margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 14px;
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .price-row {
@@ -1460,20 +1540,21 @@ img {
   font-weight: 700;
 }
 
+/* Actions Grid on Front */
 .product-actions-group {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
-.btn-view-specs {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-glass);
-  color: #fff;
+.btn-flip-card {
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
   padding: 8px 10px;
   border-radius: var(--radius-md);
-  font-size: 0.825rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1482,29 +1563,760 @@ img {
   transition: var(--transition);
 }
 
-.btn-view-specs:hover {
-  background: rgba(250, 204, 21, 0.15);
-  border-color: var(--gold);
-  color: var(--gold);
+.btn-flip-card:hover {
+  background: var(--gold);
+  color: #080a10;
+  box-shadow: 0 0 16px var(--gold-glow);
+  transform: translateY(-2px);
 }
 
-.btn-buy-wa {
-  background: var(--whatsapp);
+.btn-order-upi-trigger {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
   color: #fff;
-  padding: 8px 12px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 8px 10px;
   border-radius: var(--radius-md);
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+}
+
+.btn-order-upi-trigger:hover {
+  background: linear-gradient(135deg, #38bdf8, #0284c7);
+  color: #080a10;
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   BACK OF FLIP CARD: REAR CAMERA MODULE & SPECIFICATIONS
+   ========================================================================== */
+.card-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.back-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.back-camera-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* Camera Island Bump */
+.rear-camera-island {
+  position: relative;
+  background: radial-gradient(circle at 30% 30%, #1e293b 0%, #0a0f1d 80%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.15), 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+.island-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.island-co-brand {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.island-sensor-type {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+/* Lens Cluster Matrix */
+.lens-matrix {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lens-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #334155 10%, #0f172a 65%, #020617 100%);
+  border: 2px solid rgba(250, 204, 21, 0.5);
+  box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.5), 0 4px 12px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lens-inner-glass {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #38bdf8 0%, #1e1b4b 75%, #000 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 6px #000;
+}
+
+.lens-flash {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fef08a 20%, #eab308 70%, #713f12 100%);
+  border: 1px solid #facc15;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.8);
+}
+
+/* Detailed Camera Specs Breakdown */
+.camera-specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cam-spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.cam-spec-item:last-child {
+  border-bottom: none;
+}
+
+.cam-spec-label {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cam-spec-val {
+  color: #fff;
+  font-weight: 700;
+  text-align: right;
+}
+
+.cam-color-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cam-color-pill {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Back Actions Group */
+.card-back-footer {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-flip-back {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: #cbd5e1;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
   transition: var(--transition);
 }
 
-.btn-buy-wa:hover {
-  background: var(--whatsapp-dark);
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+.btn-flip-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ==========================================================================
+   ONLINE SHOPPING & UPI CHECKOUT MODAL (GPAY, PHONEPE, PAYTM, DYNAMIC QR)
+   ========================================================================== */
+.checkout-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.checkout-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.checkout-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 5, 10, 0.92);
+  backdrop-filter: blur(14px);
+}
+
+.checkout-modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: 94%;
+  max-width: 820px;
+  max-height: 92vh;
+  background: #0d121f;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(250, 204, 21, 0.2);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: modalScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.checkout-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: sticky;
+  top: 0;
+  background: #0d121f;
+  z-index: 10;
+}
+
+.checkout-badge-secure {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--green);
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.checkout-modal-header h3 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.checkout-modal-header .sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.checkout-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.checkout-modal-close:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  transform: rotate(90deg);
+}
+
+.checkout-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Phone Summary Card */
+.checkout-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.checkout-phone-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  background: #080b12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.checkout-phone-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.checkout-phone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checkout-brand-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.checkout-phone-info h4 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.checkout-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.checkout-price-amount {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.checkout-emi-tag {
+  font-size: 0.8rem;
+  color: var(--cyan);
+}
+
+.checkout-freebie {
+  font-size: 0.78rem;
+  color: #a7f3d0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Form Styles */
+.checkout-section-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.checkout-form-grid .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.checkout-form-grid .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkout-form-grid label,
+.utr-group label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.checkout-form-grid input,
+.checkout-select,
+.utr-group input {
+  background: #080c16;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: #fff;
+  outline: none;
+  transition: var(--transition);
+}
+
+.checkout-form-grid input:focus,
+.checkout-select:focus,
+.utr-group input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+}
+
+.checkout-select option {
+  background: #0d121f;
+  color: #fff;
+}
+
+.checkout-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+/* 1-Tap UPI App Buttons */
+.upi-app-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.btn-upi-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.btn-gpay {
+  background: #1a73e8;
+  color: #fff;
+  border: 1px solid #4285f4;
+  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.35);
+}
+
+.btn-gpay:hover {
+  background: #1557b0;
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-phonepe {
+  background: #5f259f;
+  color: #fff;
+  border: 1px solid #7c3aed;
+  box-shadow: 0 4px 15px rgba(95, 37, 159, 0.35);
+}
+
+.btn-phonepe:hover {
+  background: #4c1d95;
+  box-shadow: 0 6px 20px rgba(95, 37, 159, 0.55);
+  transform: translateY(-2px);
+}
+
+.btn-paytm {
+  background: #002970;
+  color: #fff;
+  border: 1px solid #00b9f5;
+  box-shadow: 0 4px 15px rgba(0, 41, 112, 0.35);
+}
+
+.btn-paytm:hover {
+  background: #001f54;
+  box-shadow: 0 6px 20px rgba(0, 185, 245, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Dynamic UPI QR Code Box */
+.upi-qr-display-box {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.qr-code-frame {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.qr-code-img {
+  width: 180px;
+  height: 180px;
+  display: block;
+  object-fit: contain;
+}
+
+.qr-scan-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #080a10;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.upi-owner-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.owner-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+}
+
+.owner-sub {
+  font-size: 0.7rem;
+  color: var(--green);
+  text-transform: uppercase;
+  display: block;
+}
+
+.owner-name {
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.upi-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #080b12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+
+.upi-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.upi-id-code {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--gold);
+  flex-grow: 1;
+}
+
+.btn-copy-upi {
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.btn-copy-upi:hover {
+  background: var(--gold);
+  color: #080a10;
+}
+
+.owner-contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.payment-steps-mini {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  margin-top: 4px;
+}
+
+.step-badge {
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.utr-group {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Modal Footer */
+.checkout-modal-footer {
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #0d121f;
+  position: sticky;
+  bottom: 0;
+}
+
+.btn-secondary-modal {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cbd5e1;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary-modal:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.btn-whatsapp-confirm {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: var(--transition);
+}
+
+.btn-whatsapp-confirm:hover {
+  background: #1fb855;
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .checkout-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .upi-app-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+  .upi-qr-display-box {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .qr-code-frame {
+    margin: 0 auto;
+  }
+  .upi-copy-row {
+    justify-content: center;
+  }
+  .checkout-modal-footer {
+    flex-direction: column-reverse;
+  }
+  .btn-whatsapp-confirm,
+  .btn-secondary-modal {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* ==========================================================================

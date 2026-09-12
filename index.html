@@ -237,15 +237,19 @@
       <div class="brand-logos-dark">
         <span class="brand-chip-dark"><i class="fa-brands fa-apple"></i> iPhone</span>
         <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> SAMSUNG</span>
-        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Xiaomi / Redmi</span>
-        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> vivo</span>
-        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> oppo</span>
-        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> realme</span>
         <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> ONEPLUS</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> vivo</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> iQOO</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> oppo</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Xiaomi / Redmi</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> realme</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Motorola</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Nothing / CMF</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> POCO</span>
         <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> TECNO</span>
         <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Infinix</span>
-        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> POCO</span>
         <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> itel</span>
+        <span class="brand-chip-dark"><i class="fa-solid fa-mobile-screen"></i> Lava</span>
       </div>
     </div>
   </section>
@@ -328,15 +332,19 @@
           <button class="company-tab active" data-brand="all" data-i18n="companyAll">All Companies</button>
           <button class="company-tab" data-brand="Apple">Apple iPhone</button>
           <button class="company-tab" data-brand="Samsung">Samsung</button>
-          <button class="company-tab" data-brand="Vivo">Vivo</button>
-          <button class="company-tab" data-brand="Oppo">Oppo</button>
           <button class="company-tab" data-brand="OnePlus">OnePlus</button>
+          <button class="company-tab" data-brand="Vivo">Vivo</button>
+          <button class="company-tab" data-brand="iQOO">iQOO</button>
+          <button class="company-tab" data-brand="Oppo">Oppo</button>
           <button class="company-tab" data-brand="Xiaomi">Xiaomi / Redmi</button>
           <button class="company-tab" data-brand="Realme">Realme</button>
+          <button class="company-tab" data-brand="Motorola">Motorola</button>
+          <button class="company-tab" data-brand="Nothing">Nothing / CMF</button>
+          <button class="company-tab" data-brand="POCO">POCO</button>
           <button class="company-tab" data-brand="Tecno">Tecno</button>
           <button class="company-tab" data-brand="Infinix">Infinix</button>
-          <button class="company-tab" data-brand="POCO">POCO</button>
           <button class="company-tab" data-brand="itel">itel</button>
+          <button class="company-tab" data-brand="Lava">Lava</button>
         </div>
 
         <!-- Category Filter Tabs -->
@@ -679,6 +687,143 @@
         <a href="#" id="modalWhatsAppBtn" target="_blank" class="btn btn-whatsapp-full">
           <i class="fa-brands fa-whatsapp"></i> <span data-i18n="enquireThisPhone">Enquire Availability on WhatsApp</span>
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Online Shopping & UPI Payment Modal (GPay / PhonePe / Paytm / Dynamic QR) -->
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true" role="dialog">
+    <div class="checkout-modal-backdrop" id="closeCheckoutBackdrop"></div>
+    <div class="checkout-modal-dialog">
+      <div class="checkout-modal-header">
+        <div class="checkout-title-box">
+          <span class="checkout-badge-secure"><i class="fa-solid fa-shield-check text-green"></i> <span data-i18n="verifiedUpiBadge">100% Verified Shop Owner UPI</span></span>
+          <h3 id="checkoutPhoneTitle" data-i18n="checkoutTitle">Buy Online with GPay / PhonePe</h3>
+          <span class="sub" data-i18n="checkoutSub">Direct Payment to Lucky Mobile Thirukkanur Store</span>
+        </div>
+        <button class="checkout-modal-close" id="closeCheckoutBtn" aria-label="Close Checkout Modal">&times;</button>
+      </div>
+
+      <div class="checkout-modal-body">
+        <!-- Order Summary Card -->
+        <div class="checkout-summary-card">
+          <div class="checkout-phone-thumb">
+            <img id="checkoutPhoneImg" src="assets/phones/vivo-v40.jpg" alt="Selected Phone" onerror="this.src='lucky-mobile-poster.jpg'">
+          </div>
+          <div class="checkout-phone-info">
+            <span class="checkout-brand-tag" id="checkoutPhoneBrand">Brand</span>
+            <h4 id="checkoutPhoneName">Phone Model</h4>
+            <div class="checkout-price-row">
+              <span class="checkout-price-amount" id="checkoutPhonePrice">₹00,000</span>
+              <span class="checkout-emi-tag" id="checkoutPhoneEmi">EMI Available</span>
+            </div>
+            <div class="checkout-freebie">
+              <i class="fa-solid fa-gift text-gold"></i> <span data-i18n="freebieNotice">Free 9D Tempered Glass + Protective Cover Included</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer & Delivery Form -->
+        <div class="checkout-form-section">
+          <h4 class="checkout-section-title"><i class="fa-solid fa-user-check text-gold"></i> <span data-i18n="customerDetailsTitle">1. Customer & Delivery Information</span></h4>
+          <div class="checkout-form-grid">
+            <div class="form-group">
+              <label for="custName"><span data-i18n="labelYourName">Your Full Name</span> *</label>
+              <input type="text" id="custName" placeholder="e.g. Arumugam / Priya" required>
+            </div>
+            <div class="form-group">
+              <label for="custPhone"><span data-i18n="labelWhatsAppNumber">WhatsApp Phone Number</span> *</label>
+              <input type="tel" id="custPhone" placeholder="e.g. 9876543210" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="custAddress"><span data-i18n="labelDeliveryAddress">Delivery Address / Area (Thirukkanur & Puducherry)</span> *</label>
+              <input type="text" id="custAddress" placeholder="e.g. 76, Thamarai Nagar, Near Bus Stand, Thirukkanur" required>
+            </div>
+            <div class="form-group">
+              <label for="custColorChoice"><span data-i18n="labelColorPreference">Preferred Color</span></label>
+              <select id="custColorChoice" class="checkout-select">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="custDeliveryMode"><span data-i18n="labelDeliveryMode">Delivery Option</span></label>
+              <select id="custDeliveryMode" class="checkout-select">
+                <option value="delivery">⚡ Express Doorstep Delivery (Thirukkanur Area)</option>
+                <option value="pickup">🏪 Store Pickup (Keep Ready at Shop)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI Payment Methods Section -->
+        <div class="checkout-payment-section">
+          <h4 class="checkout-section-title"><i class="fa-solid fa-mobile-screen-button text-cyan"></i> <span data-i18n="payViaUpiTitle">2. Pay Online via Official Shop Owner UPI</span></h4>
+          <p class="checkout-note" data-i18n="payViaUpiNote">Tap your preferred UPI App below to pay directly on your phone, or scan the live QR code with Google Pay / PhonePe:</p>
+
+          <!-- 1-Tap UPI Apps Grid -->
+          <div class="upi-app-buttons-grid">
+            <a href="#" id="gpayDirectBtn" class="btn-upi-app btn-gpay">
+              <i class="fa-brands fa-google-pay"></i>
+              <span>Google Pay</span>
+            </a>
+            <a href="#" id="phonepeDirectBtn" class="btn-upi-app btn-phonepe">
+              <i class="fa-solid fa-wallet"></i>
+              <span>PhonePe</span>
+            </a>
+            <a href="#" id="paytmDirectBtn" class="btn-upi-app btn-paytm">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Paytm / UPI</span>
+            </a>
+          </div>
+
+          <!-- Dynamic UPI QR Code Display -->
+          <div class="upi-qr-display-box">
+            <div class="qr-code-frame">
+              <img id="dynamicUpiQrImg" src="" alt="Dynamic Lucky Mobile UPI QR Code" class="qr-code-img">
+              <div class="qr-scan-badge"><i class="fa-solid fa-qrcode"></i> <span data-i18n="qrScanBadge">Scan with GPay or PhonePe</span></div>
+            </div>
+            <div class="upi-owner-details">
+              <div class="owner-pill">
+                <i class="fa-solid fa-shield-halved text-green"></i>
+                <div>
+                  <span class="owner-sub" data-i18n="verifiedShopPayee">Verified Merchant / Shop Owner</span>
+                  <strong class="owner-name">Lucky Mobile (லக்கி மொபைல்)</strong>
+                </div>
+              </div>
+              <div class="upi-copy-row">
+                <span class="upi-label">UPI ID:</span>
+                <code class="upi-id-code" id="upiIdDisplay">luckymobile@upi</code>
+                <button type="button" class="btn-copy-upi" id="copyUpiBtn" title="Copy Shop UPI ID">
+                  <i class="fa-regular fa-copy"></i> <span id="copyUpiBtnText">Copy</span>
+                </button>
+              </div>
+              <div class="owner-contact-row">
+                <span><i class="fa-solid fa-phone text-gold"></i> <strong>+91 98765 43210</strong> (GPay / PhonePe)</span>
+                <span><i class="fa-solid fa-location-dot text-cyan"></i> Thirukkanur, Puducherry</span>
+              </div>
+              <div class="payment-steps-mini">
+                <span class="step-badge">1. Pay with GPay / PhonePe</span>
+                <span class="step-arrow">&rarr;</span>
+                <span class="step-badge">2. Click WhatsApp Order Confirmation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction ID / UTR Input -->
+          <div class="form-group utr-group">
+            <label for="custUtr"><span data-i18n="labelUpiUtr">UPI Transaction Reference / UTR Number (Optional, 12 digits)</span></label>
+            <input type="text" id="custUtr" placeholder="e.g. 423871928371 (shown in your Google Pay / PhonePe receipt)">
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-modal-footer">
+        <button type="button" class="btn btn-secondary-modal" id="cancelCheckoutBtn">
+          <span data-i18n="btnCancel">Cancel</span>
+        </button>
+        <button type="button" class="btn btn-whatsapp-confirm" id="confirmOrderWhatsAppBtn">
+          <i class="fa-brands fa-whatsapp"></i> <span data-i18n="btnConfirmOrderWa">Confirm Order & Send Receipt on WhatsApp</span>
+        </button>
       </div>
     </div>
   </div>
